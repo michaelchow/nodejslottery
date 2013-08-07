@@ -1,24 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Title</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<title><%- title %></title>
+<link href="css/layout.css" type="text/css" rel="stylesheet" />
+<link href="css/tab.css" type="text/css" rel="stylesheet" />
 
-    <!-- HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
 
-    <!-- styles -->
-    <link href="/css/main.css" rel="stylesheet">
+<script type="text/javascript">
+<!--
+//ÇÐ»»µ½Ïà¹ØÒ³
+function gopage(n) 
+{
+  var tag = document.getElementById("menu").getElementsByTagName("li");
+  var taglength = tag.length;
 
-  </head>
+  for (i=1;i<=taglength;i++)
+  {
+    document.getElementById("m"+i).className="";
+    document.getElementById("c"+i).style.display='none';
+  }
+    document.getElementById("m"+n).className="on";
+    document.getElementById("c"+n).style.display='';
+}
+//-->
+</script>
+</head>
   <body>
-    <%- include body.ejs %>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/libs/jquery.js"></script>
-    <script src="/js/main.js"></script>
+	<%- include body.ejs.html %>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/libs/jquery.js"></script>
+	<script src="/js/game.js"></script>
+	<script src="/js/keno.js"></script>
+	<script src="/js/main.js"></script>
   </body>
 </html>

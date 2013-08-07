@@ -32,19 +32,27 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 
-var countdown = 1000;
+/*
 setInterval(function() {
-  countdown--;
-  io.sockets.emit('timer', { countdown: countdown });
-}, 1000);
+  io.sockets.emit('SYS_SYN_RES', { "res": new Date().getTime() });
+}, 10000);
+*/
 
 io.sockets.on('connection', function (socket) {
-  socket.on('reset', function (data) {
-    countdown = 1000;
-    io.sockets.emit('timer', { countdown: countdown });
-  });
-});
 
+	/*
+	socket.on('reset', function (data) {
+		countdown = 1000;
+		io.sockets.emit('timer', { countdown: countdown });
+	});
+	*/
+
+	socket.on('USER_TO_SYN', function () {
+		io.sockets.emit('SYS_SYN_RES', { "res": new Date().getTime() });
+	});
+
+});
+/*
 var data = {
 		"roundPattern" : "\"phase\":\"(\\d{6,10})\"", 
 		"numbersPattern" : "\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\"",
@@ -55,13 +63,11 @@ var data = {
 		"roundSeconds" : "300",
 		"roundType" : "Normal",
 }
-
-/*
 var data = {
 		"roundPattern" : "(\\d+),\\d{2},\\d{2},\\d{2};", 
 		"numbersPattern" : "(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2})",
 		"timePattern" : "(\\d{2}),(\\d{2}),(\\d{2});",
-		"url" : "https://www.acttab.com.au/interbet/kenoreswin",
+		"url" : "https://www.acttab.com.au/interbet/lotteryreswin",
 		"afficheTypeId" : "8",
 		"timeZone" : "AUS Eastern Standard Time",
 		"roundSeconds" : "210",
@@ -71,64 +77,162 @@ var data = {
 
 
 //测试
-var mysqlClient = require('./mysqlclient').init();
-var sql = "select * from bet_award_type where type_id = 1";
+var mysqlClient = require('./library/mysqlclient').init();
+
+var sql = "SELECT * FROM bet_award_type WHERE type_id = 8";
+//var sql = "SELECT * FROM bet_award_type WHERE type_id = 8";
 var args = null;
-var keno = new Array();
 var buf = new Array();
+var lottery = new Array();
 mysqlClient.query(sql,args,function(err, res){
-	if(err !== null){
-		console.log(err.message);
-		//utils.invokeCallback(cb, err.message, null);
-	} 
-	else {
+	if(!err !== null){
 		for (var i in res){
-			//console.log(res[i]);
-			buf[i] = new Buffer(i.toString());
-			keno[i] = require('./keno');
-			keno[i].init(res[i]);
-			keno[i].getAwardTimeout();
-		}
 
 
+			//console.log(new Date(Math.round(new Date().getTime() / 1000 + 110) * 1000 ) );
 
-		var th_func = function(s){
+
+			buf[i] = new Buffer(res[i].type_id.toString());
+			
+			
+			lottery[i] = require('./model/lottery');
+			lottery[i].init(res[i]);
 			/*
-			var sleep = function(d){
-			  for(var t = Date.now();Date.now() - t <= d;);
-			}
+			lottery[i].getAwardTimeout();
+			//lottery[i].onNextAwardTime(function(seconds){
+				//console.log(seconds);
+			//});
+			lottery[i].getAward(function(err, newAwards){
+				if (!err)
+				{
+					for ( var i in newAwards )
+					{
+						console.log(newAwards[i]);
+					}
+				}else{
+					console.log("Got error: " + err);
+				}
+				
+			});
 			*/
-			
-			console.log(thread.buffer.toString() + " thread beggin.");
-
-			setTimeout(function(){
-				thread.end(thread.buffer.toString()); //when thread over, the string "buffer.toString" will transfer to main nodejs thread.
-			}, 4000 * thread.buffer.toString()+ 1000);
-
-			//sleep(4000 * thread.buffer.toString()+ 1000);
-			
-			
-
 		}
-		var thread = tagg.create({poolsize:10, fastthread:false});//create a pool which size of 10.
+
+		/*begin=============================采集开奖结果开始================================begin*/
+		var th_getAward = function(){
+			var lottery = require('./model/lottery');
+			var mysqlClient = require('./library/mysqlclient').init();
+			var sql = "SELECT * FROM bet_award_type WHERE type_id = " + thread.buffer.toString();
+			var args = null;
+			//console.log(sql);
+			mysqlClient.query(sql,args,function(err, res){
+				lottery.init(res[0]);//初始化
+				lottery.onNextAwardTime(function(seconds){
+					console.log("we hold on for " + seconds + " seconds.");
+					console.log(thread.buffer.toString() + " thread beggin.");
+
+
+					//在这里创建一个超时
+					/*
+					var getAwardTimeout = setTimeout(function(){
+						var data = {"type_id" : thread.buffer.toString(), "lottery_type" : lottery.lotteryType, "err" : "timeout", "res" : null};
+						clearTimeout(getAward);
+						thread.end(JSON.stringify(data)); //when thread over, the string "buffer.toString" will transfer to main nodejs thread.
+					}, 1000 * seconds + 10000);
+					*/
+
+					var getAward = setTimeout(function(){
+						lottery.getAward(function(err, newAwards){
+							if (!err)
+							{
+								for ( var i in newAwards )
+								{
+									console.log(newAwards[i]);
+								}
+							}else{
+								console.log("Got error: " + err);
+							}
+							var data = {"type_id" : thread.buffer.toString(), "lottery_type" : lottery.lotteryType, "err" : err, "res" : newAwards};
+							//clearTimeout(getAwardTimeout);
+							thread.end(JSON.stringify(data)); //when thread over, the string "buffer.toString" will transfer to main nodejs thread.
+							
+						});
+					}, 1000 * seconds + 1000);
+					
+				});
+			});
+		}
+
+
+		var awardThread = tagg.create({poolsize:10, fastthread:false});//create a pool which size of 10.
 		for (var i in buf){
-			thread.pool(th_func, buf[i], function(err, res){
-				callback(err, res);
+			awardThread.pool(th_getAward, buf[i], function(err, res){
+				sendAward(err, res);
 			});
 		}
 
-		var callback = function(err, res){
+		var sendAward = function(err, res){
 			if(err) throw(err);//thread occur some errors
-			console.log(res + " thread end.");//this will be print "thread over"
-			//thread.destroy();//destory the whole thread pool
+			var data = eval(res);
+			console.log(data.type_id + " thread end.");//this will be print "thread over"
 
-			thread.pool(th_func, buf[parseInt(res)], function(err, res){
-				callback(err, res);
+			//thread.destroy();//destory the whole thread pool
+			if (data.res && data.res.length > 0 )
+				io.sockets.emit('SYS_CURR_RESULT', data);
+
+			awardThread.pool(th_getAward, new Buffer(data.type_id.toString()), function(err, res){
+				sendAward(err, res);
 			});
+			
+			
+		}
+
+		/*end=========================采集开奖结果结束================================end*/
+
+
+
+		/*begin======================发送游戏时间开始================================begin*/
+		var th_getTime = function(){
+
+			var game = require('./model/game');
+			game.getGameByCode(thread.buffer.toString(), function(err, res){
+				if (!err)
+				{
+					//延时发送时间结果
+					console.log("send game " + thread.buffer.toString() +" time after " + res.timeout + " senconds.");
+					setTimeout(function(){
+						game.getGameByCode(thread.buffer.toString(), function(err, res){
+							if (!err)
+								thread.end(JSON.stringify(res));
+						});
+						
+					}, 1000 * (res.timeout + 1));
+				}else{
+					thread.end(err);
+				}
+			});
+			//game.getGameByCode();
+			
+		
 		}
 
 
+		var timeThread = tagg.create({poolsize:10, fastthread:false});//create a pool which size of 10.
+		for (var i in buf){
+			timeThread.pool(th_getTime, buf[i], function(err, res){
+				sendTime(err, res);
+			});
+		}
+
+		var sendTime = function(err, res){
+			if(err) throw(err);//thread occur some errors
+			var data = eval(res);
+			io.sockets.emit('SYS_CURR_GAME_RES', data);
+			awardThread.pool(th_getTime, new Buffer(data.code.toString()), function(err, res){
+				sendTime(err, res);
+			});
+		}
+	} 
+	else{
+		console.log(err.message);
 	}
 });
-
-

@@ -11,8 +11,8 @@
       "tagg2": "*",
       "socket.io": "*",
       "nodegrass" : "*",
-      "async" : "*",
       "mysql":"*",
-      "timezone":"*"
+      "timezone":"*",
+      "node-cache":"*"
   }
 }

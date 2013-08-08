@@ -1,15 +1,18 @@
 var mcClient = require('./library/memcacheclient');
 
-mcClient.set('test', function(err, data){
-	console.log(data);
+mcClient.set('test', 'wawwwwwwwwwwwww', function(err, data){
+	mcClient.get('test', function(err, data){
+		console.log(data);
+		mcClient.get('test', function(err, data){
+			console.log(data);
+			mcClient.get('test', function(err, data){
+				console.log(data);
+			});
+		});
+	});
 });
 
-
-mcClient.set('test', function(err, data){
-	console.log(data);
-});
-
-
+mcClient.close();
 /*
 var memcache = require('memcache');
 

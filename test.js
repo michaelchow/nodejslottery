@@ -1,5 +1,6 @@
 var mcClient = require('./library/memcacheclient');
 
+
 mcClient.set('test', 'wawwwwwwwwwwwww', function(err, data){
 	mcClient.get('test', function(err, data){
 		console.log(data);
@@ -10,6 +11,12 @@ mcClient.set('test', 'wawwwwwwwwwwwww', function(err, data){
 			});
 		});
 	});
+});
+
+
+mcClient.get('test222222', function(err, data){
+	console.log(data);
+
 });
 
 mcClient.close();

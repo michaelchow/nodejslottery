@@ -5,6 +5,7 @@ var mysqlClient = require('./../library/mysqlclient').init();
 
 exports.index = function(req, res){
 
+	//载入支付地址等静态信息
 	var args = null;
 	var sql = "SELECT * FROM bet_award_type";
 	mysqlClient.query(sql,args,function(err, data){

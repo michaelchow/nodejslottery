@@ -5,7 +5,11 @@ var express = require('express')
   , path = require('path')
   , io = require('socket.io').listen(server)
   , tagg = require('tagg2')
-  , user = require('./routes/user');
+  , user = require('./routes/user')
+  , connect = require('connect')
+  , cookie = require('cookie')
+  , parseSignedCookie = connect.utils.parseSignedCookie
+  , memoryStore = connect.middleware.session.MemoryStore;
 
 
 // all environments
@@ -16,10 +20,16 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
-app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
 
-console.log(app.get('port'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.bodyParser());
+app.use(express.cookieParser());
+app.use(express.session({
+	secret: 'secret',
+	store: memStore = new memoryStore()
+}));
+
+app.use(app.router);//要放在bodyParser之后，处理post
 server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
@@ -37,6 +47,31 @@ setInterval(function() {
   io.sockets.emit('SYS_SYN_RES', { "res": new Date().getTime() });
 }, 10000);
 */
+
+
+io.set('authorization', function(handshakeData, callback){
+	// 通过客户端的cookie字符串来获取其session数据
+	handshakeData.cookie = cookie.parse(handshakeData.headers.cookie);
+	var connect_sid = parseSignedCookie(handshakeData.cookie['connect.sid'], 'secret');
+	console.log(connect_sid);
+	console.log(memStore);
+	if (connect_sid) {
+		memStore.get(connect_sid, function(error, session){
+			if (error) {
+				// if we cannot grab a session, turn down the connection
+				callback(error.message, false);
+			}
+			else {
+				// save the session data and accept the connection
+				handshakeData.session = session;
+				callback(null, true);
+			}
+		});
+	}
+	else {
+		callback('nosession');
+	}
+});
 
 io.sockets.on('connection', function (socket) {
 

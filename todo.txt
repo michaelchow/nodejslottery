@@ -1,3 +1,55 @@
 动态生成游戏种类
 用memcache 做数据缓存
 前后台公用js文件
+session 框架  http://js8.in/788.html
+
+<script>
+
+
+var row=4;
+var col=20;
+var data  = [1,2,2,2,3,1,0,1,1,1,1,1,1,1,1,1,1,1,3,3,4,4,4,5,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,1,1,2,3,2,3,3,3,1,1,2,2,2,3,2,1,1,1];
+var index = 0;
+var res=new Array()
+var breaked = false;
+for(var i=0; i<col; i++){
+	for(var j=0; j<row; j++){
+		if (index != 0)
+		{
+			if(data[index] == data[index-1] || breaked == true)
+			{
+				res[col*j+i] = data[index++];
+				breaked = false;
+				
+			}
+			else{
+				breaked = true;
+				break;
+			}
+		}
+		else{
+			res[col*j+i] = data[index++];
+		}
+	}
+}
+
+document.write("<table>");
+for(var i=0; i<row; i++){
+	document.write("<tr>");
+	for(var j=0; j<col; j++){
+		if (typeof(res[col*i+j]) != 'undefined')
+		{
+			document.write("<td>");
+			document.write(res[col*i+j]);
+			document.write("</td>");
+		}else{
+			document.write("<td></td>");
+		}
+		
+	}
+	document.write("</tr>");
+}
+document.write("</table>");
+
+</script>
+

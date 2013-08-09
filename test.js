@@ -11,6 +11,8 @@ mcClient.set('test', 'wawwwwwwwwwwwww', function(err, data){
 			});
 		});
 	});
+	console.log(data);
+
 });
 
 

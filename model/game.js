@@ -166,7 +166,7 @@ Game.getCorrectAwradByCode  = function (typeId, callback) {
 				memcacheClient.get("correct_affiche_" + typeId + "_" + lastAwrad, function( err, value ){
 					if(value){
 						console.log("used cache");
-						eval("var res = " + value)
+						var res = eval("(" + value + ")");
 						console.log(res);
 						return callback(null, res);
 					}else{

@@ -25,6 +25,13 @@ memclient.get = function(key, callback) {
 	});
 };
 
+memclient.delete = function(key, callback) {
+	mcClient.delete(key, function(err, data) {
+		callback(err, data);
+	});
+};
+
+
 memclient.close = function() {
 	mcClient.close();
 };

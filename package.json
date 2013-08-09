@@ -13,7 +13,6 @@
       "nodegrass" : "*",
       "mysql":"*",
       "timezone":"*",
-      "node-cache":"*",
       "memcache":"*"
   }
 }

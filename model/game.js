@@ -2,7 +2,7 @@
  * Export the constructor.
  */
 var tz = require("timezone"),
-	nodeCache = require( "node-cache" ),
+	memcacheClient = require('./../library/memcacheclient'),
 	myutil = require("./../library/myutil"),
 	mysqlClient = require('./../library/mysqlclient').init(),
 	fs = require('fs');
@@ -162,22 +162,23 @@ Game.getCorrectAwradByCode  = function (typeId, callback) {
 			lastAwrad = res[0].last_id;
 			var allowance = 10; //对比容差时间秒数
             var sampleCount = 20;//抽样对比开奖结果总条数
-			var cache = new nodeCache();
-				cache.get( "correct_affiche_" + typeId + "_" + lastAwrad, function( err, value ){
-					if(!myutil.isEmpty(value)){
+
+				memcacheClient.get("correct_affiche_" + typeId + "_" + lastAwrad, function( err, value ){
+					if(value){
 						console.log("used cache");
-						//console.log(value);
-						return callback(null, value);
+						eval("var res = " + value)
+						console.log(res);
+						return callback(null, res);
 					}else{
 						console.log("not used cache");
 						//清除cache
-						cache.get( "last_affiche_" + typeId, function( err, value ){
-							if(!myutil.isEmpty(value)){
-								cache.get( "correct_affiche_" + typeId + "_" + value, function( err, result ){
-									if(!myutil.isEmpty(result)){
-										cache.del( "correct_affiche_" + typeId + "_" + value , function( err, count ){
+						memcacheClient.get("last_affiche_" + typeId, function( err, value ){
+							if(value){
+								memcacheClient.get( "correct_affiche_" + typeId + "_" + value, function( err, result ){
+									if(result){
+										memcacheClient.delete( "correct_affiche_" + typeId + "_" + value , function( err, res ){
 											if( !err ){
-											console.log( count ); // 1
+											console.log( res ); // 1
 											// ... do something ...
 											}
 										});
@@ -186,7 +187,7 @@ Game.getCorrectAwradByCode  = function (typeId, callback) {
 							}
 						});
 						//设置当前最后一期的cache
-						cache.set( "last_affiche_" + typeId, lastAwrad.toString(), function( err, success ){
+						memcacheClient.set( "last_affiche_" + typeId, lastAwrad.toString(), function( err, success ){
 							if( !err && success ){
 								console.log( success );
 								// true
@@ -214,11 +215,13 @@ Game.getCorrectAwradByCode  = function (typeId, callback) {
 									//console.log(Date.parse(res[i].next_draw_time) >  Date.parse(new Date().Format("yyyy-MM-dd 00:00:00")));
 									if (sub1 <= allowance && sub2 <= allowance && ( new Date().getTime() - openTime)  / 1000 > drawSeconds * 4 && res[i].next_draw_time * 1000 >  Date.parse(new Date().Format("yyyy-MM-dd 00:00:00")) )
 									{
-										cache.set( "correct_affiche_" + typeId + "_" + lastAwrad.toString(), res[i], function( err, success ){
+										memcacheClient.set( "correct_affiche_" + typeId + "_" + lastAwrad.toString(), JSON.stringify(res[i]), function( err, success ){
 											if( !err && success ){
-												cache.get( "correct_affiche_" + typeId + "_" + lastAwrad.toString(), function( err, res ){
-													//console.log( "sucucced get cache"  );
-													//console.log( res );
+												console.log( "sucucced set cache :" );
+												console.log(res[i]);
+												memcacheClient.get( "correct_affiche_" + typeId + "_" + lastAwrad.toString(), function( err, value ){
+													console.log( "sucucced get cache :"  );
+													console.log(value);
 												});
 											}
 										});
@@ -227,7 +230,7 @@ Game.getCorrectAwradByCode  = function (typeId, callback) {
 								}
 								if (res.length >0)
 								{
-									cache.set( "correct_affiche_" + typeId + "_" + lastAwrad.toString(), res[0], function( err, success ){
+									memcacheClient.set( "correct_affiche_" + typeId + "_" + lastAwrad.toString(), JSON.stringify(res[0]), function( err, success ){
 										if( !err && success ){
 											return callback(null, res[0]);
 										}

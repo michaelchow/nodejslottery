@@ -1,8 +1,6 @@
 var memcacheConfig = require('./../config/memcache');
 var memcache = require('memcache');
 
-
-
 mcClient = new memcache.Client(memcacheConfig.host, memcacheConfig.port);
 //mcClient.addHandler(onConnect);
 mcClient.on('error', function(e){

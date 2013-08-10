@@ -1,3 +1,7 @@
 var game = require('./model/game');
 
-game.getGameList();
+game.getGameList(function(err, data){
+
+	console.log(data);
+
+});

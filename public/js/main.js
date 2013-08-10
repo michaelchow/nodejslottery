@@ -1,6 +1,5 @@
 var socket = io.connect(window.location.hostname);
 var game = new Game();
-socket.emit('USER_TO_SYN');
 
 socket.on('SYS_SYN_RES', function (res) {
 	game.showTime(res.res);

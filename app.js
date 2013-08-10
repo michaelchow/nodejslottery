@@ -73,16 +73,20 @@ io.set('authorization', function(handshakeData, callback){
 
 io.sockets.on('connection', function (socket) {
 
+	socket.emit('SYS_SYN_RES', { "res": new Date().getTime() });
+
 	/*
 	socket.on('reset', function (data) {
 		countdown = 1000;
 		io.sockets.emit('timer', { countdown: countdown });
 	});
-	*/
+	
 
 	socket.on('USER_TO_SYN', function () {
 		socket.emit('SYS_SYN_RES', { "res": new Date().getTime() });
 	});
+
+	*/
 
 });
 /*

@@ -63,7 +63,7 @@ Game.getGameByCode = function (gameCode, callback) {
 					var addDraw = Math.floor((new Date().getTime() /1000 - (res.next_draw_time + res.delay_seconds)) / res.draw_seconds );
 					addDraw = addDraw < 0 ? 0 : addDraw;
 					addDraw++;//至少要加一期
-					console.log( addDraw );
+					//console.log( addDraw );
 					if (game.draw.toString().indexOf(new Date().Format("yyyyMMdd")) == 0 || game.draw.toString().indexOf(new Date(new Date().getTime() - 60*60*24*1000).Format("yyyyMMdd")) == 0 || game.draw.toString().indexOf(new Date(new Date().getTime() + 60*60*24*1000).Format("yyyyMMdd")) == 0)
 					{
 						game.draw = game.draw.toString().substr(8);
@@ -114,7 +114,7 @@ Game.getGameStatusByCode = function (gameCode, callback) {
 	var sql = "SELECT status FROM bet_award_type WHERE type_id = " + gameCode;
 	var args = null;
 	mysqlClient.query(sql,args,function(err, res){
-		console.log(res);
+		//console.log(res);
 		return callback(null, res[0].status);
 	});
 }
@@ -268,17 +268,25 @@ Game.getGameList = function (callback) {
 	var sql = "SELECT * FROM bet_award_type ORDER BY order_id";
 	var args = null;
 	var _this = this;
+	var games = Array();
 	mysqlClient.query(sql,args,function(err, res){
-		for(var i in res)
+		if (!err)
 		{
-			_this.getGameByCode(res[i].type_id, function(err, data){
-			
-			console.log(data);
-			});
+			for(var i in res)
+			{
+				_this.getGameByCode(res[i].type_id, function(err, data){
+					games.push(data);
+					if (games.length == res.length)
+					{
+						callback(null, games);
+					}
+				});
 
+			}
+		}else{
+			callback(err, null);
 		}
 
-		//return callback(null, res[0].status);
 	});
 }
 

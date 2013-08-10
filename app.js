@@ -81,7 +81,7 @@ io.sockets.on('connection', function (socket) {
 	*/
 
 	socket.on('USER_TO_SYN', function () {
-		io.sockets.emit('SYS_SYN_RES', { "res": new Date().getTime() });
+		socket.emit('SYS_SYN_RES', { "res": new Date().getTime() });
 	});
 
 });
@@ -120,11 +120,7 @@ var lottery = new Array();
 mysqlClient.query(sql,args,function(err, res){
 	if(!err !== null){
 		for (var i in res){
-
-
 			//console.log(new Date(Math.round(new Date().getTime() / 1000 + 110) * 1000 ) );
-
-
 			buf[i] = new Buffer(res[i].type_id.toString());
 			
 			

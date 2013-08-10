@@ -5,9 +5,13 @@ var memcache = require('memcache');
 
 mcClient = new memcache.Client(memcacheConfig.host, memcacheConfig.port);
 //mcClient.addHandler(onConnect);
-console.log(memcacheConfig);
+mcClient.on('error', function(e){
+	console.log("Memcache error : " + e.stack);
+    // there was an error - exception is 1st argument
+});
+
+
 mcClient.connect();
-console.log('start');
 //mcClient.close();
 var memclient = module.exports;
 /**

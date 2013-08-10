@@ -15,7 +15,6 @@ Game.getGameByCode = function (gameCode, callback) {
 	var game = {"code" : gameCode, "draw" : 0, "waitSeconds" : 0, "endTime" : new Date().getTime(), "startTime" : new Date().getTime(), "timeout" : 0, "status" : 0};
 
 	// do some more stuff ...
-	console.log("test begin: ");
 	_this.getGameStatusByCode(gameCode, function(err, res){
 		if (res == 0)
 		{
@@ -165,9 +164,9 @@ Game.getCorrectAwradByCode  = function (typeId, callback) {
 
 				memcacheClient.get("correct_affiche_" + typeId + "_" + lastAwrad, function( err, value ){
 					if(value){
-						console.log("used cache");
+						//console.log("used cache");
 						var res = eval("(" + value + ")");
-						console.log(res);
+						//console.log(res);
 						return callback(null, res);
 					}else{
 						console.log("not used cache");
@@ -261,6 +260,26 @@ Game.getNextAwardTimeByCode = function (typeId, callback) {
 		callback(err, res[0].time);
 	});
 
+}
+
+
+//得到所有游戏列表
+Game.getGameList = function (callback) {
+	var sql = "SELECT * FROM bet_award_type ORDER BY order_id";
+	var args = null;
+	var _this = this;
+	mysqlClient.query(sql,args,function(err, res){
+		for(var i in res)
+		{
+			_this.getGameByCode(res[i].type_id, function(err, data){
+			
+			console.log(data);
+			});
+
+		}
+
+		//return callback(null, res[0].status);
+	});
 }
 
 eval(fs.readFileSync('./library/dateformat.js').toString());

@@ -95,7 +95,6 @@ console.log(timeArray);
 		var awards = Array();
 		for(var i in drawArray)
 		{
-			console.log("time " + i + " : " + timeArray[i]);
 			var time = _this.sortTime(timeArray[i]);
 			game.insertAward(i, _this.sortDraw(drawArray[i]), _this.typeId, numbersArray[i], time, time + _this.drawSeconds, function(err, res){
 				//console.log(newAwards);

@@ -24,7 +24,7 @@ NND.init = function(){
 NND.query = function(sql, args, callback){
   _pool.getConnection(function(err, client) {
     if (!!err) {
-      console.error('[sqlqueryErr] '+err.stack);
+      console.error('Mysql error : '+err.stack);
       return;
     }
     client.query(sql, args, function(err, res) {

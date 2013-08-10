@@ -9,7 +9,8 @@ var express = require('express')
   , connect = require('connect')
   , cookie = require('cookie')
   , parseSignedCookie = connect.utils.parseSignedCookie
-  , memoryStore = connect.middleware.session.MemoryStore;
+  , memoryStore = connect.middleware.session.MemoryStore
+  , game = require('./model/game');
 
 
 // all environments
@@ -73,7 +74,15 @@ io.set('authorization', function(handshakeData, callback){
 
 io.sockets.on('connection', function (socket) {
 
-	socket.emit('SYS_SYN_RES', { "res": new Date().getTime() });
+	//初始化发包
+	socket.emit('SYS_SYN_RES', { "res": new Date().getTime() });//发送时间包
+	game.getGameList(function(err, games){
+		for(var i in games)
+		{
+			io.sockets.emit('SYS_CURR_GAME_RES', games[i]);//发送各种游戏状态包
+		}
+	
+	});
 
 	/*
 	socket.on('reset', function (data) {
@@ -127,10 +136,9 @@ mysqlClient.query(sql,args,function(err, res){
 			//console.log(new Date(Math.round(new Date().getTime() / 1000 + 110) * 1000 ) );
 			buf[i] = new Buffer(res[i].type_id.toString());
 			
-			
-			lottery[i] = require('./model/lottery');
-			lottery[i].init(res[i]);
 			/*
+			lottery[i] = require('./controller/lottery');
+			lottery[i].init(res[i]);
 			lottery[i].getAwardTimeout();
 			//lottery[i].onNextAwardTime(function(seconds){
 				//console.log(seconds);
@@ -152,7 +160,7 @@ mysqlClient.query(sql,args,function(err, res){
 
 		/*begin=============================采集开奖结果开始================================begin*/
 		var th_getAward = function(){
-			var lottery = require('./model/lottery');
+			var lottery = require('./controller/lottery');
 			var mysqlClient = require('./library/mysqlclient').init();
 			var sql = "SELECT * FROM bet_award_type WHERE type_id = " + thread.buffer.toString();
 			var args = null;
@@ -226,7 +234,7 @@ mysqlClient.query(sql,args,function(err, res){
 		/*begin======================发送游戏时间开始================================begin*/
 		var th_getTime = function(){
 
-			var game = require('./model/game');
+			var game = require('./model/game');//子线程必须独立引用
 			game.getGameByCode(thread.buffer.toString(), function(err, res){
 				if (!err)
 				{

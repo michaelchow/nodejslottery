@@ -12,7 +12,7 @@ var Game = exports = module.exports = {};
 Game.getGameByCode = function (gameCode, callback) {
 
 	var _this = this;
-	var game = {"code" : gameCode, "draw" : 0, "waitSeconds" : 0, "endTime" : new Date().getTime(), "startTime" : new Date().getTime(), "timeout" : 0, "status" : 0};
+	var game = {"code" : gameCode, "draw" : "0", "waitSeconds" : 0, "endTime" : new Date().getTime(), "startTime" : new Date().getTime(), "timeout" : 0, "status" : 0};
 
 	// do some more stuff ...
 	_this.getGameStatusByCode(gameCode, function(err, res){
@@ -102,6 +102,7 @@ Game.getGameByCode = function (gameCode, callback) {
 					game.timeout = Math.floor(game.endTime - new Date().getTime() / 1000);
 					game.status = game.timeout > game.waitSeconds ? 1 : 2; //状态  1投注 2为等待
 				}
+				game.draw = game.draw.toString();//转换为文字类型
 			}
 			//console.log(game);
 			return callback(null, game);
@@ -275,6 +276,7 @@ Game.getGameList = function (callback) {
 			for(var i in res)
 			{
 				_this.getGameByCode(res[i].type_id, function(err, data){
+					data.lottery_type = res[i].lottery_type;
 					games.push(data);
 					if (games.length == res.length)
 					{

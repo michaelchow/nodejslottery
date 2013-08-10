@@ -1,4 +1,5 @@
 function Keno() {
+	this.gameList = new Array();
 }
 
 Keno.prototype.showAward = function(data) {
@@ -18,4 +19,15 @@ Keno.prototype.showAward = function(data) {
 		},500 * i);
 	});
 
+}
+
+
+Keno.prototype.setGame = function(data) {
+	if (data.status)
+	{
+		this.gameList[data.code] = data;
+	}else{
+		this.gameList.splice($.inArray(data,this.gameList),1);
+	}
+	
 }

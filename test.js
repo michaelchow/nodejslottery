@@ -18,7 +18,6 @@ mcClient.set('test', 'wawwwwwwwwwwwww', function(err, data){
 
 mcClient.get('test222222', function(err, data){
 	console.log(data);
-
 });
 
 mcClient.close();

@@ -1,4 +1,5 @@
 function Game() {
+	this.keno = new Keno();
 }
 //游戏板块变换位置
 Game.prototype.switchBlock = function(blockId1, blockId2) {  
@@ -7,6 +8,7 @@ Game.prototype.switchBlock = function(blockId1, blockId2) {
 	$("#" + blockId2 ).html(html);
 }
 
+//动态显示时间
 Game.prototype.showTime = function(data) {
 	
     var D = new Date(data);
@@ -27,11 +29,21 @@ Game.prototype.showTime = function(data) {
     setTimeout("game.showTime(" + data + ")", 1000);
 }
 
+
+//开奖画面
 Game.prototype.showAward = function(data) {
-	var game = eval("new " + data.lottery_type.replace(/(^|\s+)\w/g,function(s){return s.toUpperCase();}) + "()");//动态new 一个对象 比如Keno 正则是首字母大写
+	var game = eval("new " + this._ucfirst(data.lottery_type) + "()");//动态new 一个对象 比如Keno 正则是首字母大写
 	game.showAward(data.res);
 }
 
+//设置游戏时间、期数
 Game.prototype.setGame = function(data) {
-	//alert(data);
+	eval("this." + data.lottery_type).setGame(data);
 }
+/*
+//私有函数 首字母大写
+Game.prototype._ucfirst = function(str) {
+	str = str.replace(/(^|\s+)\w/g,function(s){return s.toUpperCase();});
+	return str;
+}
+*/

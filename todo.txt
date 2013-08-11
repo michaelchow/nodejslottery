@@ -1,9 +1,7 @@
 动态生成游戏种类
-用memcache 做数据缓存
 前后台公用js文件
 session 框架  http://js8.in/788.html
-http超时问题
-http://fengmk2.github.io/blog/2011/08/nodejs_http_request_timeout.html
+整理游戏种类,开奖地址
 <script>
 
 

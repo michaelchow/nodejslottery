@@ -192,7 +192,7 @@ mysqlClient.query(sql,args,function(err, res){
 							}else{
 								console.log("Got error: " + err);
 							}
-							var data = {"type_id" : thread.buffer.toString(), "lottery_type" : lottery.lotteryType, "err" : err, "res" : newAwards};
+							var data = {"typeId" : thread.buffer.toString(), "lotteryType" : lottery.lotteryType, "err" : err, "res" : newAwards};
 							//clearTimeout(getAwardTimeout);
 							thread.end(JSON.stringify(data)); //when thread over, the string "buffer.toString" will transfer to main nodejs thread.
 							
@@ -214,13 +214,13 @@ mysqlClient.query(sql,args,function(err, res){
 		var sendAward = function(err, res){
 			if(err) throw(err);//thread occur some errors
 			var data = eval(res);
-			console.log(data.type_id + " thread end.");//this will be print "thread over"
+			console.log(data.typeId + " thread end.");//this will be print "thread over"
 
 			//thread.destroy();//destory the whole thread pool
 			if (data.res && data.res.length > 0 )
 				io.sockets.emit('SYS_CURR_RESULT', data);
 
-			awardThread.pool(th_getAward, new Buffer(data.type_id.toString()), function(err, res){
+			awardThread.pool(th_getAward, new Buffer(data.typeId.toString()), function(err, res){
 				sendAward(err, res);
 			});
 			
@@ -251,7 +251,6 @@ mysqlClient.query(sql,args,function(err, res){
 					thread.end(err);
 				}
 			});
-			//game.getGameByCode();
 			
 		
 		}

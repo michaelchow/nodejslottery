@@ -12,12 +12,13 @@ var Game = exports = module.exports = {};
 Game.getGameByCode = function (gameCode, callback) {
 
 	var _this = this;
-	var game = {"code" : gameCode, "draw" : "0", "waitSeconds" : 0, "endTime" : new Date().getTime(), "startTime" : new Date().getTime(), "timeout" : 0, "status" : 0};
+	var game = {"code" : gameCode, "draw" : "0", "waitSeconds" : 0, "endTime" : new Date().getTime(), "startTime" : new Date().getTime(), "timeout" : 0, "status" : 0, "lotteryType" : ""};
 
 	// do some more stuff ...
-	_this.getGameStatusByCode(gameCode, function(err, res){
-		if (res == 0)
+	_this.getGameInfoByCode(gameCode, function(err, res){
+		if (res.status == 0)
 		{
+			game.lotteryType = res.lottery_type;
 			return callback(null, game);
 		}
 
@@ -103,6 +104,7 @@ Game.getGameByCode = function (gameCode, callback) {
 					game.status = game.timeout > game.waitSeconds ? 1 : 2; //状态  1投注 2为等待
 				}
 				game.draw = game.draw.toString();//转换为文字类型
+				game.lotteryType = res.lottery_type;
 			}
 			//console.log(game);
 			return callback(null, game);
@@ -111,12 +113,12 @@ Game.getGameByCode = function (gameCode, callback) {
 }
 
 //得到游戏状态
-Game.getGameStatusByCode = function (gameCode, callback) {
-	var sql = "SELECT status FROM bet_award_type WHERE type_id = " + gameCode;
+Game.getGameInfoByCode = function (gameCode, callback) {
+	var sql = "SELECT * FROM bet_award_type WHERE type_id = " + gameCode;
 	var args = null;
 	mysqlClient.query(sql,args,function(err, res){
 		//console.log(res);
-		return callback(null, res[0].status);
+		return callback(null, res[0]);
 	});
 }
 //插入新开奖结果
@@ -276,7 +278,6 @@ Game.getGameList = function (callback) {
 			for(var i in res)
 			{
 				_this.getGameByCode(res[i].type_id, function(err, data){
-					data.lottery_type = res[i].lottery_type;
 					games.push(data);
 					if (games.length == res.length)
 					{

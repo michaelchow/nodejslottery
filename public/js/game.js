@@ -32,13 +32,12 @@ Game.prototype.showTime = function(data) {
 
 //开奖画面
 Game.prototype.showAward = function(data) {
-	var game = eval("new " + this._ucfirst(data.lottery_type) + "()");//动态new 一个对象 比如Keno 正则是首字母大写
-	game.showAward(data.res);
+	eval("this." + data.lotteryType).showAward(data.res);
 }
 
 //设置游戏时间、期数
 Game.prototype.setGame = function(data) {
-	eval("this." + data.lottery_type).setGame(data);
+	eval("this." + data.lotteryType).setGame(data);
 }
 /*
 //私有函数 首字母大写

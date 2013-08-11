@@ -10,7 +10,7 @@ Game.prototype.switchBlock = function(blockId1, blockId2) {
 
 //动态显示时间
 Game.prototype.showTime = function(data) {
-	
+	this.keno.tickTock();
     var D = new Date(data);
     var dateStr = "";
     var dateStr = dateStr + D.getFullYear() + "年";

@@ -18,7 +18,15 @@ Keno.prototype.showAward = function(data) {
 			});
 		},500 * i);
 	});
+}
 
+Keno.prototype.tickTock = function() {
+	for (var i in this.gameList)
+	{
+		if (this.gameList[i].timeout)
+			this.gameList[i].timeout--;
+		$("#game" + i + " .countdown span").text(this.gameList[i].timeout);
+	}
 }
 
 

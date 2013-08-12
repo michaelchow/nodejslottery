@@ -28,7 +28,7 @@ Game.getGameByCode = function (gameCode, callback) {
 			//console.log(res);
 			if (res != null)
 			{
-				game.draw = res.award_draw;
+				game.draw = res.draw;
 				if (game.draw.toString().indexOf(new Date().Format("yyyyMMdd")) == 0 || game.draw.toString().indexOf(new Date(new Date().getTime() - 60*60*24*1000).Format("yyyyMMdd")) == 0)
 				{
 					game.draw = game.draw.toString().substr(8);
@@ -53,7 +53,7 @@ Game.getGameByCode = function (gameCode, callback) {
 					game.draw++;
 				}
 				game.waitSeconds = res.wait_seconds;
-				game.code = res.award_type_id;
+				game.code = res.type_id;
 				game.endTime = res.next_draw_time + res.delay_seconds;//单位为秒
 				game.startTime = game.endTime - res.draw_seconds;//单位秒
 				game.timeout = Math.floor(game.endTime - new Date().getTime() / 1000);//单位为秒
@@ -114,7 +114,7 @@ Game.getGameByCode = function (gameCode, callback) {
 
 //得到游戏状态
 Game.getGameInfoByCode = function (gameCode, callback) {
-	var sql = "SELECT * FROM bet_award_type WHERE type_id = " + gameCode;
+	var sql = "SELECT * FROM bet_award_type WHERE id = " + gameCode;
 	var args = null;
 	mysqlClient.query(sql,args,function(err, res){
 		//console.log(res);
@@ -123,7 +123,8 @@ Game.getGameInfoByCode = function (gameCode, callback) {
 }
 //插入新开奖结果
 Game.insertAward = function (index, draw, typeId, numbers, time, next_time, callback) {
-	var sql = "SELECT * FROM bet_award WHERE award_type_id = " + typeId + " AND award_draw = '" + draw + "'"
+	var sql = "SELECT * FROM bet_award WHERE type_id = " + typeId + " AND draw = '" + draw + "'";
+
 	var args = null;
 	if(typeof(numbers) == 'undefined' || typeof(draw) == 'undefined'){
 		return callback(null, {"index" : index, "award" : null} );
@@ -136,7 +137,8 @@ Game.insertAward = function (index, draw, typeId, numbers, time, next_time, call
 			//return callback(null, {"index" : index, "award" : {"typeId" : typeId, "draws" : draw, "numbers" : numbers }});
 			
 		}else{
-			var sql = "INSERT INTO `bet_award` (`award_draw`, `award_numbers`, `draw_time`, `standard_draw_time`, `next_draw_time`, `award_type_id`) VALUES ('" + draw + "', '" + numbers + "', " + Math.round(new Date().getTime() / 1000) + ", " + time + ", " + next_time + ", " + typeId + ")";
+			var sql = "INSERT INTO `bet_award` (`draw`, `numbers`, `draw_time`, `standard_draw_time`, `next_draw_time`, `type_id`) VALUES ('" + draw + "', '" + numbers + "', " + Math.round(new Date().getTime() / 1000) + ", " + time + ", " + next_time + ", " + typeId + ")";
+			//console.log(sql);
 			var args = null;
 			mysqlClient.query(sql,args,function(err, res){
 				if (!err)
@@ -153,7 +155,7 @@ Game.insertAward = function (index, draw, typeId, numbers, time, next_time, call
 return err, result
 */
 Game.getCorrectAwradByCode  = function (typeId, callback) {
-	var sql = "SELECT MAX(a.award_id) AS last_id FROM bet_award AS a, bet_award_type AS at WHERE a.award_type_id = " + typeId + " AND a.award_type_id = at.type_id";
+	var sql = "SELECT MAX(a.id) AS last_id FROM bet_award AS a, bet_award_type AS at WHERE a.type_id = " + typeId + " AND a.type_id = at.id";
 	var args = null;
 	var lastAwrad;
 	mysqlClient.query(sql,args,function(err, res){
@@ -162,6 +164,7 @@ Game.getCorrectAwradByCode  = function (typeId, callback) {
 			return callback(null, null);
 		}else{
 			lastAwrad = res[0].last_id;
+			lastAwrad = lastAwrad ? lastAwrad : 0;
 			var allowance = 10; //对比容差时间秒数
             var sampleCount = 20;//抽样对比开奖结果总条数
 
@@ -198,7 +201,7 @@ Game.getCorrectAwradByCode  = function (typeId, callback) {
 						});
 
 						var args = null;
-						var sql = "SELECT * FROM bet_award AS a LEFT JOIN bet_award_type AS at ON a.award_type_id = at.type_id WHERE a.award_type_id = " + typeId + " AND at.status != 2 AND a.award_id <= " + lastAwrad + " ORDER BY a.next_draw_time DESC, a.award_draw DESC LIMIT " + sampleCount;
+						var sql = "SELECT * FROM bet_award AS a LEFT JOIN bet_award_type AS at ON a.type_id = at.id WHERE a.type_id = " + typeId + " AND at.status != 2 AND a.id <= " + lastAwrad + " ORDER BY a.next_draw_time DESC, a.draw DESC LIMIT " + sampleCount;
 						var j = 0;
 						mysqlClient.query(sql,args,function(err, res){
 							if (!err)
@@ -257,7 +260,7 @@ Game.getCorrectAwradByCode  = function (typeId, callback) {
 
 //得到游戏最新下一期开奖
 Game.getNextAwardTimeByCode = function (typeId, callback) {
-	var sql = "SELECT MAX(next_draw_time) AS time FROM bet_award WHERE award_type_id = " + typeId;
+	var sql = "SELECT MAX(next_draw_time) AS time FROM bet_award WHERE type_id = " + typeId;
 	var args = null;
 	mysqlClient.query(sql,args,function(err, res){
 		callback(err, res[0].time);
@@ -277,7 +280,7 @@ Game.getGameList = function (callback) {
 		{
 			for(var i in res)
 			{
-				_this.getGameByCode(res[i].type_id, function(err, data){
+				_this.getGameByCode(res[i].id, function(err, data){
 					games.push(data);
 					if (games.length == res.length)
 					{

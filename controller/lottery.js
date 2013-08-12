@@ -15,13 +15,12 @@ var Lottery = exports = module.exports = {};
  
 
 Lottery.init = function(data){
-	this.typeId = data.type_id;
+	this.id = data.id;
 	this.drawPattern   = data.draw_pattern; //开奖期数正则
     this.numbersPattern = data.numbers_pattern; //开奖结果正则
     this.timePattern = data.time_pattern; //开奖时间正则
     this.url = data.url; //url地址
-    this.code = data.type_id; //开奖结果类型id
-    this.drawSeconds = data.draw_seconds;
+    this.drawSeconds = data.draw_seconds;//每一局时间
     this.timeZone = data.time_zone; //开奖时区
     this.drawType = data.draw_type; //是否在期数面前加上今天的日期
 	this.lotteryType = data.lottery_type;//是时时彩还是快乐彩
@@ -39,7 +38,7 @@ Lottery.getAward = function (callback) {
 	 var _this = this;
 	 //this.url = "http://127.0.0.1"
 	 //console.log(_this.numbersPattern);
-	 console.log(this.url);
+	 //console.log(this.url);
 	 http.get(this.url,function(data,status,headers){
 		
 		/*====================begin 正则拿期数 开奖结果 时间=========================*/
@@ -87,19 +86,21 @@ Lottery.getAward = function (callback) {
 			}
 			
 		}
-console.log(drawArray);
-console.log(numbersArray);
-console.log(timeArray);
+//console.log(drawArray);
+//console.log(numbersArray);
+//console.log(timeArray);
 		/*====================end 正则拿期数 开奖结果 时间=========================*/
 
 		var awards = Array();
 		for(var i in drawArray)
 		{
-			var time = _this.sortTime(timeArray[i]);
-			game.insertAward(i, _this.sortDraw(drawArray[i]), _this.typeId, numbersArray[i], time, time + _this.drawSeconds, function(err, res){
+			var time = _this._sortTime(timeArray[i]);
+			game.insertAward(i, _this._sortDraw(drawArray[i]), _this.id, numbersArray[i], time, time + _this.drawSeconds, function(err, res){
 				//console.log(newAwards);
 				if(!err)
 					awards.push(res);
+				else
+					console.log(err);
 				if (awards.length == drawArray.length)//多条异步线程执行完成后 再执行下一步
 				{
 					var newAwards = Array();
@@ -125,7 +126,7 @@ console.log(timeArray);
 };
 
 //整理时间
-Lottery.sortTime = function (timeStr) {
+Lottery._sortTime = function (timeStr) {
 	var Lotterytz = tz(require("timezone/" + this.timeZone));
 	var LotteryDate= tz(new Date().getTime(), "%F ", this.timeZone);//拿到当前时区的日期
 	switch (timeStr.split(":").length)
@@ -138,7 +139,20 @@ Lottery.sortTime = function (timeStr) {
 			break;
 		case 2 :
 		case 3 ://时间格式完全
-			var time = Lotterytz(LotteryDate + timeStr, this.timeZone);//算出当地游戏开奖时间
+			var time = Lotterytz(new Date(Date.parse(LotteryDate + timeStr)).Format("yyyy-MM-dd hh:mm:ss"), this.timeZone);//算出当地游戏开奖时间
+			
+			
+            /* 
+             * 现在我们算出开奖时间和现在的时间差
+             * 由于网站公布的数据有可能是23;xx到00:xx的结果
+             * 严格来讲 应该是没有比现在还要晚一期的时间的，
+			 * 但是实际使用中，由于机器时间误差，可能是多晚一些，这里所以时间可以是晚两局时间
+			 * 也就是 drawSeconds * 2
+             */
+			if ((time - new Date().getTime()) > this.drawSeconds * 2 * 1000)
+			{
+				time = time - 60 * 60 * 24 * 1000;//那么时间就是昨天的，天数减去1
+			}
 			return Math.floor(time / 1000);
 		default:
 			break;
@@ -149,7 +163,7 @@ Lottery.sortTime = function (timeStr) {
 
 }
 //整理期数
-Lottery.sortDraw = function (drawStr) {
+Lottery._sortDraw = function (drawStr) {
 	switch (this.drawType)
 	{
 	case 'AutoGenerateByTime' :
@@ -164,16 +178,16 @@ Lottery.sortDraw = function (drawStr) {
 }
 
 Lottery.getAwardTimeout = function () {
-	game.getGameByCode(this.code, function(err, result){
+	game.getGameByCode(this.id, function(err, result){
 	});
 }
 
 //在开奖时执行
 Lottery.onNextAwardTime = function (callback) {
-	game.getNextAwardTimeByCode(this.code, function(err, result){
+	game.getNextAwardTimeByCode(this.id, function(err, result){
 		if (!err)
 		{
-			console.log(new Date(result*1000));
+			//console.log(new Date(result*1000));
 			seconds = result - Math.round(new Date().getTime()/1000);
 			result = seconds > 0 ? seconds : 0;
 			return callback(result);

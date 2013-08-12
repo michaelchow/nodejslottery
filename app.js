@@ -125,7 +125,7 @@ var data = {
 //测试
 var mysqlClient = require('./library/mysqlclient').init();
 
-var sql = "SELECT * FROM bet_award_type WHERE type_id = 8";
+var sql = "SELECT * FROM bet_award_type WHERE id = 4";
 //var sql = "SELECT * FROM bet_award_type WHERE type_id = 8";
 var args = null;
 var buf = new Array();
@@ -134,11 +134,12 @@ mysqlClient.query(sql,args,function(err, res){
 	if(!err !== null){
 		for (var i in res){
 			//console.log(new Date(Math.round(new Date().getTime() / 1000 + 110) * 1000 ) );
-			buf[i] = new Buffer(res[i].type_id.toString());
+			buf[i] = new Buffer(res[i].id.toString());
 			
-			/*
+			
 			lottery[i] = require('./controller/lottery');
 			lottery[i].init(res[i]);
+			/*
 			lottery[i].getAwardTimeout();
 			//lottery[i].onNextAwardTime(function(seconds){
 				//console.log(seconds);
@@ -155,6 +156,7 @@ mysqlClient.query(sql,args,function(err, res){
 				}
 				
 			});
+			
 			*/
 		}
 
@@ -162,7 +164,7 @@ mysqlClient.query(sql,args,function(err, res){
 		var th_getAward = function(){
 			var lottery = require('./controller/lottery');
 			var mysqlClient = require('./library/mysqlclient').init();
-			var sql = "SELECT * FROM bet_award_type WHERE type_id = " + thread.buffer.toString();
+			var sql = "SELECT * FROM bet_award_type WHERE id = " + thread.buffer.toString();
 			var args = null;
 			//console.log(sql);
 			mysqlClient.query(sql,args,function(err, res){
@@ -170,17 +172,6 @@ mysqlClient.query(sql,args,function(err, res){
 				lottery.onNextAwardTime(function(seconds){
 					console.log("we hold on for " + seconds + " seconds.");
 					console.log(thread.buffer.toString() + " thread beggin.");
-
-
-					//在这里创建一个超时
-					/*
-					var getAwardTimeout = setTimeout(function(){
-						var data = {"type_id" : thread.buffer.toString(), "lottery_type" : lottery.lotteryType, "err" : "timeout", "res" : null};
-						clearTimeout(getAward);
-						thread.end(JSON.stringify(data)); //when thread over, the string "buffer.toString" will transfer to main nodejs thread.
-					}, 1000 * seconds + 10000);
-					*/
-
 					var getAward = setTimeout(function(){
 						lottery.getAward(function(err, newAwards){
 							if (!err)
@@ -198,7 +189,6 @@ mysqlClient.query(sql,args,function(err, res){
 							
 						});
 					}, 1000 * seconds + 1000);
-					
 				});
 			});
 		}
@@ -223,8 +213,6 @@ mysqlClient.query(sql,args,function(err, res){
 			awardThread.pool(th_getAward, new Buffer(data.typeId.toString()), function(err, res){
 				sendAward(err, res);
 			});
-			
-			
 		}
 
 		/*end=========================采集开奖结果结束================================end*/
@@ -233,7 +221,6 @@ mysqlClient.query(sql,args,function(err, res){
 
 		/*begin======================发送游戏时间开始================================begin*/
 		var th_getTime = function(){
-
 			var game = require('./model/game');//子线程必须独立引用
 			game.getGameByCode(thread.buffer.toString(), function(err, res){
 				if (!err)
@@ -251,8 +238,6 @@ mysqlClient.query(sql,args,function(err, res){
 					thread.end(err);
 				}
 			});
-			
-		
 		}
 
 

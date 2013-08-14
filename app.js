@@ -98,34 +98,11 @@ io.sockets.on('connection', function (socket) {
 	*/
 
 });
-/*
-var data = {
-		"roundPattern" : "\"phase\":\"(\\d{6,10})\"", 
-		"numbersPattern" : "\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\",\"(\\d{2})\"",
-		"timePattern" : "\"time_draw\":\"\\d{4}-\\d{2}-\\d{2} (\\d{2}):(\\d{2}):(\\d{2})",
-		"url" : "http://baidu.lecai.com/lottery/ajax_latestdrawn.php?lottery_type=543",
-		"afficheTypeId" : "1",
-		"timeZone" : "China Standard Time",
-		"roundSeconds" : "300",
-		"roundType" : "Normal",
-}
-var data = {
-		"roundPattern" : "(\\d+),\\d{2},\\d{2},\\d{2};", 
-		"numbersPattern" : "(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2}),(\\d{1,2})",
-		"timePattern" : "(\\d{2}),(\\d{2}),(\\d{2});",
-		"url" : "https://www.acttab.com.au/interbet/lotteryreswin",
-		"afficheTypeId" : "8",
-		"timeZone" : "AUS Eastern Standard Time",
-		"roundSeconds" : "210",
-		"roundType" : "AddDateBeforeRound",
-}
-*/
-
 
 //≤‚ ‘
 var mysqlClient = require('./library/mysqlclient').init();
 
-var sql = "SELECT * FROM bet_award_type WHERE id = 4";
+var sql = "SELECT * FROM bet_award_type WHERE id = 8";
 //var sql = "SELECT * FROM bet_award_type WHERE type_id = 8";
 var args = null;
 var buf = new Array();

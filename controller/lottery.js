@@ -81,8 +81,8 @@ Lottery.getAward = function (callback) {
 				}
 				timeArray.push(timeGroup.join(":"));
 				if(_this.drawType == 'AutoGenerateByTime')
-					drawArray.push(_this.generateDrawByTime(_this.sortTime(timeGroup.join(":"))));
-				//_this.generateDrawByTime(_this.sortTime(timeGroup.join(":"));
+					drawArray.push(_this.generateDrawByTime(_this._sortTime(timeGroup.join(":"))));
+				//_this.generateDrawByTime(_this._sortTime(timeGroup.join(":"));
 			}
 			
 		}
@@ -120,7 +120,7 @@ Lottery.getAward = function (callback) {
 			return callback(null, null);
 		}
 	},'utf8').on('error', function(e) {
-		return callback(e.message, null);
+		return callback(e.stack, null);
 	});
 
 };
@@ -136,7 +136,6 @@ Lottery._sortTime = function (timeStr) {
 			//console.log(new Date());
 			//console.log(new Date(new Date().getTime() + parseInt(timeStr) * 1000));
 			return Math.floor(new Date().getTime() / 1000 + parseInt(timeStr) - this.drawSeconds);
-			break;
 		case 2 :
 		case 3 ://时间格式完全
 			var time = Lotterytz(new Date(Date.parse(LotteryDate + timeStr)).Format("yyyy-MM-dd hh:mm:ss"), this.timeZone);//算出当地游戏开奖时间
@@ -153,6 +152,13 @@ Lottery._sortTime = function (timeStr) {
 			{
 				time = time - 60 * 60 * 24 * 1000;//那么时间就是昨天的，天数减去1
 			}
+
+			//处理加拿大西部时间
+			if (this.id = 7)
+			{
+				var delaySecond - 30;//延迟n秒确定开奖
+			}
+
 			return Math.floor(time / 1000);
 		default:
 			break;

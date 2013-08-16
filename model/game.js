@@ -137,7 +137,7 @@ Game.insertAward = function (index, draw, typeId, numbers, time, next_time, call
 			//return callback(null, {"index" : index, "award" : {"typeId" : typeId, "draws" : draw, "numbers" : numbers }});
 			
 		}else{
-			var sql = "INSERT INTO `bet_award` (`draw`, `numbers`, `draw_time`, `standard_draw_time`, `next_draw_time`, `type_id`) VALUES ('" + draw + "', '" + numbers + "', " + Math.round(new Date().getTime() / 1000) + ", " + time + ", " + next_time + ", " + typeId + ")";
+			var sql = "REPLACE INTO `bet_award` (`draw`, `numbers`, `draw_time`, `standard_draw_time`, `next_draw_time`, `type_id`) VALUES ('" + draw + "', '" + numbers + "', " + Math.round(new Date().getTime() / 1000) + ", " + time + ", " + next_time + ", " + typeId + ")";
 			//console.log(sql);
 			var args = null;
 			mysqlClient.query(sql,args,function(err, res){

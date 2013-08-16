@@ -86,9 +86,9 @@ Lottery.getAward = function (callback) {
 			}
 			
 		}
-//console.log(drawArray);
-//console.log(numbersArray);
-//console.log(timeArray);
+console.log(drawArray);
+console.log(numbersArray);
+console.log(timeArray);
 		/*====================end 正则拿期数 开奖结果 时间=========================*/
 
 		var awards = Array();
@@ -154,9 +154,9 @@ Lottery._sortTime = function (timeStr) {
 			}
 
 			//处理加拿大西部时间
-			if (this.id = 7)
+			if (this.id == 7)
 			{
-				var delaySecond - 30;//延迟n秒确定开奖
+				var delaySecond = 30;//延迟n秒确定开奖
 			}
 
 			return Math.floor(time / 1000);

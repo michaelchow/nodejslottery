@@ -102,7 +102,7 @@ io.sockets.on('connection', function (socket) {
 //≤‚ ‘
 var mysqlClient = require('./library/mysqlclient').init();
 
-var sql = "SELECT * FROM bet_award_type WHERE id = 6 or id =8 or id =4 or id =3";
+var sql = "SELECT * FROM bet_award_type WHERE id = 1";
 //var sql = "SELECT * FROM bet_award_type WHERE type_id = 8";
 var args = null;
 var buf = new Array();
@@ -116,7 +116,7 @@ mysqlClient.query(sql,args,function(err, res){
 			
 			lottery[i] = require('./controller/lottery');
 			lottery[i].init(res[i]);
-			/*
+			
 			lottery[i].getAwardTimeout();
 			//lottery[i].onNextAwardTime(function(seconds){
 				//console.log(seconds);
@@ -133,7 +133,7 @@ mysqlClient.query(sql,args,function(err, res){
 				}
 				
 			});
-			
+			/*
 			*/
 		}
 
@@ -149,6 +149,7 @@ mysqlClient.query(sql,args,function(err, res){
 				lottery.onNextAwardTime(function(seconds){
 					console.log("we hold on for " + seconds + " seconds.");
 					console.log(thread.buffer.toString() + " thread beggin.");
+					/*
 					var getAward = setTimeout(function(){
 						lottery.getAward(function(err, newAwards){
 							if (!err)
@@ -166,6 +167,7 @@ mysqlClient.query(sql,args,function(err, res){
 							
 						});
 					}, 1000 * seconds + 1000);
+					*/
 				});
 			});
 		}

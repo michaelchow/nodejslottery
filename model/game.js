@@ -124,7 +124,6 @@ Game.getGameInfoByCode = function (gameCode, callback) {
 //插入新开奖结果
 Game.insertAward = function (index, draw, typeId, numbers, time, next_time, callback) {
 	var sql = "SELECT * FROM bet_award WHERE type_id = " + typeId + " AND draw = '" + draw + "'";
-
 	var args = null;
 	if(typeof(numbers) == 'undefined' || typeof(draw) == 'undefined'){
 		return callback(null, {"index" : index, "award" : null} );

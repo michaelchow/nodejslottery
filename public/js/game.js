@@ -32,7 +32,7 @@ Game.prototype.showTime = function(data) {
 
 //开奖画面
 Game.prototype.showAward = function(data) {
-	eval("this." + data.lotteryType).showAward(data.res);
+	eval("this." + data.lotteryType).showAward(data);
 }
 
 //设置游戏时间、期数

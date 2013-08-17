@@ -3,10 +3,11 @@ function Keno() {
 }
 
 Keno.prototype.showAward = function(data) {
-	$("#game1 .num_left li").animate({ opacity: 0 }, 0);
-	$("#game1 .num_left li").each(function(i) {
+	$("#game" + data.typeId + " .num_left li").animate({ opacity: 0 }, 0);
+	$("#game" + data.typeId + " .num_left li").css({transform: 'rotateX(0deg)'});
+	$("#game" + data.typeId + " .num_left li").each(function(i) {
 		setTimeout(function(){
-			$("#game1 .num_left li").eq(i).animate({
+			$("#game" + data.typeId + " .num_left li").eq(i).animate({
 				opacity: 1,
 				rotateX:360
 			},
@@ -14,7 +15,8 @@ Keno.prototype.showAward = function(data) {
 				step: function(now, fx) {
 					if (fx.prop == 'rotateX')
 						$(this).css({transform: 'rotateX(' + now + 'deg)'});
-				}
+				},
+				complete: function(){}
 			});
 		},500 * i);
 	});

@@ -35,6 +35,10 @@ Game.prototype.showAward = function(data) {
 	eval("this." + data.lotteryType).showAward(data);
 }
 
+Game.prototype.setAwards = function(data) {
+	eval("this." + data.lotteryType).setAwards(data);
+}
+
 //设置游戏时间、期数
 Game.prototype.setGame = function(data) {
 	eval("this." + data.lotteryType).setGame(data);

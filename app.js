@@ -80,6 +80,14 @@ io.sockets.on('connection', function (socket) {
 		for(var i in games)
 		{
 			io.sockets.emit('SYS_CURR_GAME_RES', games[i]);//发送各种游戏状态包
+			game.getAwardByRange(games[i].code, 0, 40, Math.round((new Date().getTime() - 60*60*24*1000 )/1000), Math.round(new Date().getTime()/1000), null, function(err, awards){
+				if (!err)
+				{
+					awards.lotteryType = games[i].lotteryType;
+					io.sockets.emit('SYS_AWARD_RES', awards);//发送游戏历史开奖
+				}
+				
+			});
 		}
 	
 	});
@@ -187,7 +195,7 @@ mysqlClient.query(sql,args,function(err, res){
 
 			//thread.destroy();//destory the whole thread pool
 			if (data.res && data.res.length > 0 )
-				io.sockets.emit('SYS_CURR_RESULT', data);
+				io.sockets.emit('SYS_CURR_RESULT', data);//开奖结果
 
 			awardThread.pool(th_getAward, new Buffer(data.typeId.toString()), function(err, res){
 				sendAward(err, res);

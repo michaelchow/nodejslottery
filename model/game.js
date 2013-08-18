@@ -291,8 +291,28 @@ Game.getGameList = function (callback) {
 		}else{
 			callback(err, null);
 		}
-
 	});
 }
 
+//得到所有游戏列表
+Game.getAwardByRange = function (code, page, pageSize, startDate, endDate, draw, callback) {
+	var where = " WHERE type_id = " + code;
+    where += " AND draw_time >= '" + startDate + "'";
+    where += " AND draw_time <= '" + endDate + "'";
+    if (draw)
+		where += " AND draw = '"+ draw + "'";
+
+	var sql = "SELECT draw, numbers FROM bet_award " + where + " ORDER BY draw_time DESC, draw DESC LIMIT " + page * pageSize + " , " + pageSize;
+	var args = null;
+	mysqlClient.query(sql,args,function(err, res){
+		if (!err)
+		{
+			data = {"typeId" : code, "awards" : res};
+			callback(null, data);
+		}else{
+			callback(err, null);
+		}
+
+	});
+}
 eval(fs.readFileSync('./library/dateformat.js').toString());

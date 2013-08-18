@@ -13,6 +13,10 @@ socket.on('SYS_CURR_GAME_RES', function (res) {
 	game.setGame(res);
 });
 
+socket.on('SYS_AWARD_RES', function (res) {
+	game.setAwards(res);
+});
+
 $('#test1').click(function() {
     game.switchBlock('game1', 'game2');
 });

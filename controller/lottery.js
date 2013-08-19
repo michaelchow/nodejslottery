@@ -127,8 +127,8 @@ console.log(timeArray);
 
 //整理时间
 Lottery._sortTime = function (timeStr) {
-	var Lotterytz = tz(require("timezone/" + this.timeZone));
-	var LotteryDate= tz(new Date().getTime(), "%F ", this.timeZone);//拿到当前时区的日期
+	var lotterytz = tz(require("timezone/" + this.timeZone));
+	var lotteryDate= tz(new Date().getTime(), "%F ", this.timeZone);//拿到当前时区的日期
 	switch (timeStr.split(":").length)
 	{
 		case 1 ://只有秒数 拿到的是下一期剩余读秒数 所以要减去一期时间
@@ -138,7 +138,7 @@ Lottery._sortTime = function (timeStr) {
 			return Math.floor(new Date().getTime() / 1000 + parseInt(timeStr) - this.drawSeconds);
 		case 2 :
 		case 3 ://时间格式完全
-			var time = Lotterytz(new Date(Date.parse(LotteryDate + timeStr)).Format("yyyy-MM-dd hh:mm:ss"), this.timeZone);//算出当地游戏开奖时间
+			var time = lotterytz(new Date(Date.parse(lotteryDate + timeStr)).Format("yyyy-MM-dd hh:mm:ss"), this.timeZone);//算出当地游戏开奖时间
 			
 			
             /* 
@@ -156,7 +156,7 @@ Lottery._sortTime = function (timeStr) {
 			//处理加拿大西部时间
 			if (this.id == 7)
 			{
-				var delaySecond = 30;//延迟n秒确定开奖
+				var delaySecond = 30;//延迟n秒确定开奖 
 			}
 
 			return Math.floor(time / 1000);
@@ -195,8 +195,11 @@ Lottery.onNextAwardTime = function (callback) {
 		{
 			//console.log(new Date(result*1000));
 			seconds = result - Math.round(new Date().getTime()/1000);
-			result = seconds > 0 ? seconds : 0;
-			return callback(result);
+			seconds = seconds > 0 ? seconds : 0;
+			console.log("we hold on for " + seconds + " seconds.");
+			setTimeout(function(){
+				return callback();
+			}, 1000 * seconds + 1000);
 		}
 	});
 }

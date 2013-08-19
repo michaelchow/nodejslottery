@@ -110,7 +110,7 @@ io.sockets.on('connection', function (socket) {
 //≤‚ ‘
 var mysqlClient = require('./library/mysqlclient').init();
 
-var sql = "SELECT * FROM bet_award_type WHERE id = 1 or id = 8 or id = 3 or id = 4 or id = 6";
+var sql = "SELECT * FROM bet_award_type WHERE id = 11";
 //var sql = "SELECT * FROM bet_award_type WHERE type_id = 8";
 var args = null;
 var buf = new Array();
@@ -154,27 +154,22 @@ mysqlClient.query(sql,args,function(err, res){
 			//console.log(sql);
 			mysqlClient.query(sql,args,function(err, res){
 				lottery.init(res[0]);//≥ı ºªØ
-				lottery.onNextAwardTime(function(seconds){
-					console.log("we hold on for " + seconds + " seconds.");
+				lottery.onNextAwardTime(function(){
 					console.log(thread.buffer.toString() + " thread beggin.");
-					
-					var getAward = setTimeout(function(){
-						lottery.getAward(function(err, newAwards){
-							if (!err)
+					lottery.getAward(function(err, newAwards){
+						if (!err)
+						{
+							for ( var i in newAwards )
 							{
-								for ( var i in newAwards )
-								{
-									console.log(newAwards[i]);
-								}
-							}else{
-								console.log("Got error: " + err);
+								console.log(newAwards[i]);
 							}
-							var data = {"typeId" : thread.buffer.toString(), "lotteryType" : lottery.lotteryType, "err" : err, "res" : newAwards};
-							//clearTimeout(getAwardTimeout);
-							thread.end(JSON.stringify(data)); //when thread over, the string "buffer.toString" will transfer to main nodejs thread.
-							
-						});
-					}, 1000 * seconds + 1000);
+						}else{
+							console.log("Got error: " + err);
+						}
+						var data = {"typeId" : thread.buffer.toString(), "lotteryType" : lottery.lotteryType, "err" : err, "res" : newAwards};
+						//clearTimeout(getAwardTimeout);
+						thread.end(JSON.stringify(data)); //when thread over, the string "buffer.toString" will transfer to main nodejs thread.
+					});
 					/**/
 				});
 			});

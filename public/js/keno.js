@@ -39,5 +39,31 @@ Keno.prototype.setGame = function(data) {
 	}else{
 		this.gameList.splice($.inArray(data,this.gameList),1);
 	}
+}
+
+Keno.prototype.setAwards = function(data) {
+	this.gameList[data.typeId].awards = data.awards;
+	var ok = new Array();
+	for (var i in data.awards)
+	{
+		ok[i] = this._getBigSmall(data.awards[i].numbers);
+	}
+	var ggg= '';
 	
+}
+
+Keno.prototype._getBigSmall = function(nums) {
+	var numArray = nums.split(',');
+	var total = 0;
+	for (var i in numArray)
+	{
+		total += parseInt(numArray[i]);
+	}
+	if (total > 810 ){
+		return 'big';
+	}else if (total == 810){
+		return '810';
+	}else{
+		return 'small';
+	}
 }

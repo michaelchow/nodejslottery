@@ -48,8 +48,52 @@ Keno.prototype.setAwards = function(data) {
 	{
 		ok[i] = this._getBigSmall(data.awards[i].numbers);
 	}
-	var ggg= '';
+	this.setHistory(5,20,ok,$("#game1 .h1 table"));
 	
+}
+
+Keno.prototype.setHistory = function(row, col, data, obj){
+	var index = 0;
+	var res=new Array()
+	var breaked = false;
+	for(var i=0; i<col; i++){
+		for(var j=0; j<row; j++){
+			if (index != 0)
+			{
+				if(data[index] == data[index-1] || breaked == true)
+				{
+					res[col*j+i] = data[index++];
+					breaked = false;
+					
+				}
+				else{
+					breaked = true;
+					break;
+				}
+			}
+			else{
+				res[col*j+i] = data[index++];
+			}
+		}
+	}
+
+	obj.html("");
+	var html = "<table>";
+	for(var i=0; i<row; i++){
+		html += "<tr>";
+		for(var j=0; j<col; j++){
+			if (typeof(res[col*i+j]) != 'undefined')
+			{
+				html += "<td>" + res[col*i+j] + "</td>";
+			}else{
+				html += "<td>" + "</td>";
+			}
+			
+		}
+		html += "</tr>";
+	}
+	html += "</table>";
+	obj.html(html);
 }
 
 Keno.prototype._getBigSmall = function(nums) {

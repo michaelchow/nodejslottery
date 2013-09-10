@@ -31,7 +31,7 @@ text-align:center;}
 	height:19px;
 	line-height:16px;
 }
-#content{
+.history{
 	background:#FFF;
 	font-weight:bold;
 	float:left;
@@ -39,12 +39,12 @@ text-align:center;}
 	height:108px;
 	_height:120px;
 	margin-left:2px;}
-#content table{border:#E4E4E4 solid 1px;}
-#content td{ cursor:pointer; width:10px; height:15px; border:#E4E4E4  solid 1px;}
+.history table{border:#E4E4E4 solid 1px;}
+.history td{ cursor:pointer; width:10px; height:15px; border:#E4E4E4  solid 1px;}
 .red{ color:#F00;}
-#content ul{
+.history ul{
 	list-style:none;}
-#content li{padding:3px;height:16px; 
+.history li{padding:3px;height:16px; 
 	line-height:16px;}
 #copy{clear:both}
 

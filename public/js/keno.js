@@ -42,14 +42,18 @@ Keno.prototype.setGame = function(data) {
 }
 
 Keno.prototype.setAwards = function(data) {
-	this.gameList[data.typeId].awards = data.awards;
-	var ok = new Array();
-	for (var i in data.awards)
-	{
-		ok[i] = this._getBigSmall(data.awards[i].numbers);
+	try{
+		this.gameList[data.typeId].awards = data.awards;
+		var bigsmall = new Array();
+		for (var i in data.awards)
+		{
+			bigsmall[i] = this._getBigSmall(data.awards[i].numbers);
+			bigsmall[i] = lang[bigsmall[i]];
+		}
+		this.setHistory(6,20,bigsmall,$("#game" + data.typeId + " .h1 table"));
+	}catch(e){
+		//alert(data);
 	}
-	this.setHistory(5,20,ok,$("#game1 .h1 table"));
-	
 }
 
 Keno.prototype.setHistory = function(row, col, data, obj){
@@ -86,7 +90,7 @@ Keno.prototype.setHistory = function(row, col, data, obj){
 			{
 				html += "<td>" + res[col*i+j] + "</td>";
 			}else{
-				html += "<td>" + "</td>";
+				html += "<td>" + " " + "</td>";
 			}
 			
 		}

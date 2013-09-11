@@ -1,5 +1,6 @@
 function Game() {
 	this.keno = new Keno();
+	this.ssc = new Ssc();
 }
 //游戏板块变换位置
 Game.prototype.switchBlock = function(blockId1, blockId2) {  
@@ -41,7 +42,11 @@ Game.prototype.setAwards = function(data) {
 
 //设置游戏时间、期数
 Game.prototype.setGame = function(data) {
-	eval("this." + data.lotteryType).setGame(data);
+	try{
+		eval("this." + data.lotteryType).setGame(data);
+	}catch(e){
+		alert(data);
+	}
 }
 /*
 //私有函数 首字母大写

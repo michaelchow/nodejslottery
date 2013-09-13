@@ -1,4 +1,4 @@
-#wrap{
+.wrap{
 	padding-left:2px;
 	float:left;
 	text-align:left;
@@ -6,24 +6,24 @@
 	height:auto;
 	margin:0 auto;
 	}
-#menu{
+.menu{
 	float:left; 
 	width:68px; 
 	}
-#menu ul{}
-#menu li{
+.menu ul{}
+.menu li{
 	background:#f2f2f2;
 	border:dashed 1px #d9d9d9;
 	height:16px; 
 	line-height:16px; 
 	text-align:right}
-#menu a{
+.menu a{
 color:#333;
 font-size:12px;
 text-decoration:none; 
 display:block; 
 text-align:center;}
-#menu a:hover,#menu .on a{
+.menu a:hover,.menu .on a{
 	background:#187ba4;
 	color:#FFF;
 	font-size:14px;

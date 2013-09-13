@@ -24,3 +24,17 @@ $('#test1').click(function() {
 $('#reset').click(function() {
     socket.emit('reset');
 });
+
+
+$(".menu li").hover(function() {
+	_this = $(this);
+	_this.parents(".wrap").find(".history div").each(function(index){
+		//寻找索引 控制显示隐藏
+		if (index == _this.parent().find("li").index(_this))
+			$(this).show();
+		else
+			$(this).hide();
+	});
+	$(this).siblings().removeClass("on");
+	$(this).addClass("on");
+});

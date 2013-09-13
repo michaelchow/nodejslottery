@@ -110,7 +110,7 @@ io.sockets.on('connection', function (socket) {
 //≤‚ ‘
 var mysqlClient = require('./library/mysqlclient').init();
 
-var sql = "SELECT * FROM bet_award_type WHERE id = 11";
+var sql = "SELECT * FROM bet_award_type WHERE id = 1 or id = 8 or id = 4";
 //var sql = "SELECT * FROM bet_award_type WHERE type_id = 8";
 var args = null;
 var buf = new Array();

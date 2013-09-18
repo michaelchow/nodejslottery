@@ -213,6 +213,9 @@ mysqlClient.query(sql,args,function(err, res){
 						game.getGameByCode(thread.buffer.toString(), function(err, res){
 							if (!err)
 								thread.end(JSON.stringify(res));
+							else{
+								throw(err);
+							}
 						});
 						
 					}, 1000 * (res.timeout + 1));

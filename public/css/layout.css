@@ -54,6 +54,7 @@ body{ font-size:12px;}
 .font_blue{ color:#00F  !important;}
 .font_pink{ color:#F0F  !important;}
 .font_brown{ color:#600  !important;}
+.border_red{ border:1px solid #F00;}
  
 .content01 .award{ float:right; width:215px; height:200px; margin:3px 3px 3px 0px; display:inline;}/*height:200px;*/
 .content01 #award{ height:212px;}

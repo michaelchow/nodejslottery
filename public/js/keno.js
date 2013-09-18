@@ -5,6 +5,13 @@ function Keno() {
 Keno.prototype.showAward = function(data) {
 	$("#game" + data.typeId + " .num_left li").animate({ opacity: 0 }, 0);
 	$("#game" + data.typeId + " .num_left li").css({transform: 'rotateX(0deg)'});
+	
+	var numArray = data.res[0].numbers.split(',');
+	for(var i in data.res[0].numbers.split(',')){
+		$("#game" + data.typeId + " .num_left li").eq(i).find("a").text(numArray[i]);
+	}
+	var totalSum = 0;
+	var _this = this;
 	$("#game" + data.typeId + " .num_left li").each(function(i) {
 		setTimeout(function(){
 			$("#game" + data.typeId + " .num_left li").eq(i).animate({
@@ -16,7 +23,11 @@ Keno.prototype.showAward = function(data) {
 					if (fx.prop == 'rotateX')
 						$(this).css({transform: 'rotateX(' + now + 'deg)'});
 				},
-				complete: function(){}
+				complete: function(){
+					totalSum += parseInt(numArray[i]);//算分数总值
+					Game.shake($("#game" + data.typeId + " .bet_x ." + _this._getBigSmall(totalSum)), "border_red", 2);
+					//alert(totalSum);
+				}
 			});
 		},500 * i);
 	});
@@ -47,7 +58,7 @@ Keno.prototype.setAwards = function(data) {
 		var bigsmall = new Array();
 		for (var i in data.awards)
 		{
-			bigsmall[i] = this._getBigSmall(data.awards[i].numbers);
+			bigsmall[i] = this._getBigSmall(this._getTotal(data.awards[i].numbers));
 			bigsmall[i] = lang[bigsmall[i]];
 		}
 		this.setHistory(6,20,bigsmall,$("#game" + data.typeId + " .h1 table"));
@@ -99,14 +110,16 @@ Keno.prototype.setHistory = function(row, col, data, obj){
 	html += "</table>";
 	obj.html(html);
 }
-
-Keno.prototype._getBigSmall = function(nums) {
+Keno.prototype._getTotal = function(nums) {
 	var numArray = nums.split(',');
 	var total = 0;
 	for (var i in numArray)
 	{
 		total += parseInt(numArray[i]);
 	}
+	return total;
+}
+Keno.prototype._getBigSmall = function(total) {
 	if (total > 810 ){
 		return 'big';
 	}else if (total == 810){

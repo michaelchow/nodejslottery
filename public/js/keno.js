@@ -25,7 +25,7 @@ Keno.prototype.showAward = function(data) {
 				},
 				complete: function(){
 					totalSum += parseInt(numArray[i]);//算分数总值
-					Game.shake($("#game" + data.typeId + " .bet_x ." + _this._getBigSmall(totalSum)), "border_red", 2);
+					Game.shake($("#game" + data.typeId + " .bet_x ." + _this._getBigSmall(totalSum)).parent(), "border_red", 2);
 					//alert(totalSum);
 				}
 			});
@@ -55,13 +55,33 @@ Keno.prototype.setGame = function(data) {
 Keno.prototype.setAwards = function(data) {
 	try{
 		this.gameList[data.typeId].awards = data.awards;
-		var bigsmall = new Array();
+		
+
+		var bigSmall = new Array();
 		for (var i in data.awards)
 		{
-			bigsmall[i] = this._getBigSmall(this._getTotal(data.awards[i].numbers));
-			bigsmall[i] = lang[bigsmall[i]];
+			bigSmall[i] = this._getBigSmall(this._getTotal(data.awards[i].numbers));
+			bigSmall[i] = lang[bigSmall[i]];
 		}
-		this.setHistory(6,20,bigsmall,$("#game" + data.typeId + " .h1 table"));
+		this.setHistory(6,20,bigSmall,$("#game" + data.typeId + " .h1 table"));
+		
+		var singleDual = new Array();
+		for (var i in data.awards)
+		{
+			singleDual[i] = this._getSingleDual(this._getTotal(data.awards[i].numbers));
+			singleDual[i] = lang[singleDual[i]];
+		}
+		this.setHistory(6,20,singleDual,$("#game" + data.typeId + " .h2 table"));
+		
+		var oddSumEven = new Array();
+		for (var i in data.awards)
+		{
+			oddSumEven[i] = this._getOddSumEven(data.awards[i].numbers);
+			oddSumEven[i] = lang[oddSumEven[i]];
+		}
+		this.setHistory(6,20,oddSumEven,$("#game" + data.typeId + " .h3 table"));	
+		
+		
 	}catch(e){
 		//alert(data);
 	}
@@ -110,6 +130,7 @@ Keno.prototype.setHistory = function(row, col, data, obj){
 	html += "</table>";
 	obj.html(html);
 }
+
 Keno.prototype._getTotal = function(nums) {
 	var numArray = nums.split(',');
 	var total = 0;
@@ -119,6 +140,20 @@ Keno.prototype._getTotal = function(nums) {
 	}
 	return total;
 }
+
+Keno.prototype._getSingleDual = function(total) {
+	var singleDualType = '';
+	if ((total%2)==0)
+	{
+		singleDualType =  'dual';
+	}
+	else
+	{
+		singleDualType =  'single';
+	}
+	return singleDualType;
+}
+
 Keno.prototype._getBigSmall = function(total) {
 	if (total > 810 ){
 		return 'big';
@@ -127,4 +162,98 @@ Keno.prototype._getBigSmall = function(total) {
 	}else{
 		return 'small';
 	}
+}
+
+Keno.prototype._getFiveElement = function(total) {
+	var fiveElementType = '';
+	if (total >= 210 &&  total <= 695){
+		fiveElementType = "metal";
+	}
+	else if (total >= 696 && total <= 763)
+	{
+		fiveElementType = "wood";
+	}
+	else if (total >= 764 && total <= 855)
+	{
+		fiveElementType = "water";
+	}
+	else if (total >= 856 && total <= 923)
+	{
+		fiveElementType = "fire";
+	}
+	else if (total >= 924 && total <= 1410)
+	{
+		fiveElementType = "earth";
+	}
+	return fiveElementType;
+}
+
+Keno.prototype._getOddSumEven = function(nums) {
+
+	var even = 0;
+	var odd = 0;
+	var oddHeEvenType = '';
+	var numArray = nums.split(',');
+
+	for (var i in numArray)
+	{
+		if(numArray[i] != 0)
+		{
+			if ((numArray[i]%2)==0 ){
+				even++;
+			}else{
+				odd++;
+			}
+		}
+	}
+		
+	if (even == 0 && odd == 0 )
+	{
+		oddHeEvenType =  '';
+	}
+	else if (even>odd)
+	{
+		oddHeEvenType =  'even';
+	}else if (even<odd)
+	{
+		oddHeEvenType =  'odd';
+	}else if (even == odd)
+	{
+		oddHeEvenType =  'sum';
+	}
+	return oddHeEvenType;
+}
+
+Keno.prototype._getUpMiddleDown = function(nums) {
+	var up = 0;
+	var down = 0;
+	var upMiddleDownType = '';
+	
+	var numArray = nums.split(',');
+	
+	for (var i in numArray)
+	{
+		if (parseInt(numArray[i]) > 40){
+			down++;
+		}else if(parseInt(numArray[i]) != 0 ){
+			up++;
+		}
+	}
+	if (up== 0 && down == 0)
+	{
+		upMiddleDownType =  '';
+	}
+	else if (up>down)
+	{
+		upMiddleDownType =  'up';
+	}
+	else if (up<down)
+	{
+		upMiddleDownType =  'down';
+	}
+	else if (up == down)
+	{
+		upMiddleDownType =  'middle';
+	}
+	return upMiddleDownType;
 }

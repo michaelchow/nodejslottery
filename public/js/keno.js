@@ -80,7 +80,15 @@ Keno.prototype.setAwards = function(data) {
 			oddSumEven[i] = lang[oddSumEven[i]];
 		}
 		this.setHistory(6,20,oddSumEven,$("#game" + data.typeId + " .h3 table"));	
+
 		
+		var upMiddleDown = new Array();
+		for (var i in data.awards)
+		{
+			upMiddleDown[i] = this._getUpMiddleDown(data.awards[i].numbers);
+			upMiddleDown[i] = lang[upMiddleDown[i]];
+		}
+		this.setHistory(6,20,upMiddleDown,$("#game" + data.typeId + " .h4 table"));	
 		
 	}catch(e){
 		//alert(data);

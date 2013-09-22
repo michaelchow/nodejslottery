@@ -13,3 +13,10 @@ lang['down'] = '下';
 lang['odd'] = '奇';
 lang['sum'] = '和';
 lang['even'] = '偶';
+
+
+lang['metal'] = '金';
+lang['wood'] = '木';
+lang['water'] = '水';
+lang['fire'] = '火';
+lang['earth'] = '土';

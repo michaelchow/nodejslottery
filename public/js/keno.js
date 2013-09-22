@@ -54,60 +54,66 @@ Keno.prototype.setGame = function(data) {
 
 Keno.prototype.setAwards = function(data) {
 	try{
-		this.gameList[data.typeId].awards = data.awards;
-		
+		if (data.awards.length > 0 )
+		{
+			this.gameList[data.typeId].awards = data.awards;
+			
 
-		var bigSmall = new Array();
-		for (var i in data.awards)
-		{
-			bigSmall[i] = this._getBigSmall(this._getTotal(data.awards[i].numbers));
-			bigSmall[i] = lang[bigSmall[i]];
+			var bigSmall = new Array();
+			var singleDual = new Array();
+			var oddSumEven = new Array();
+			var upMiddleDown = new Array();
+			var fiveElementType = new Array();
+			var sum = Array();
+			
+			for (var i in data.awards)
+			{
+				bigSmall[i] = this._getBigSmall(this._getTotal(data.awards[i].numbers));
+				bigSmall[i] = lang[bigSmall[i]];
+				
+				singleDual[i] = this._getSingleDual(this._getTotal(data.awards[i].numbers));
+				singleDual[i] = lang[singleDual[i]];
+				
+				oddSumEven[i] = this._getOddSumEven(data.awards[i].numbers);
+				oddSumEven[i] = lang[oddSumEven[i]];
+				
+				upMiddleDown[i] = this._getUpMiddleDown(data.awards[i].numbers);
+				upMiddleDown[i] = lang[upMiddleDown[i]];
+				
+				fiveElementType[i] = this._getFiveElement(this._getTotal(data.awards[i].numbers));
+				fiveElementType[i] = lang[fiveElementType[i]];
+				
+				sum[i] = this._getTotal(data.awards[i].numbers);
+				
+				
+			}
+			this.setHistory(6,20,bigSmall,$("#game" + data.typeId + " .h1 table"), true);
+			this.setHistory(6,20,singleDual,$("#game" + data.typeId + " .h2 table"), true);
+			this.setHistory(6,20,oddSumEven,$("#game" + data.typeId + " .h3 table"), true);
+			this.setHistory(6,20,upMiddleDown,$("#game" + data.typeId + " .h4 table"), true);
+			this.setHistory(6,20,sum,$("#game" + data.typeId + " .h5 table"), false);
+			this.setHistory(6,20,fiveElementType,$("#game" + data.typeId + " .h6 table"), true);
 		}
-		this.setHistory(6,20,bigSmall,$("#game" + data.typeId + " .h1 table"));
-		
-		var singleDual = new Array();
-		for (var i in data.awards)
-		{
-			singleDual[i] = this._getSingleDual(this._getTotal(data.awards[i].numbers));
-			singleDual[i] = lang[singleDual[i]];
-		}
-		this.setHistory(6,20,singleDual,$("#game" + data.typeId + " .h2 table"));
-		
-		var oddSumEven = new Array();
-		for (var i in data.awards)
-		{
-			oddSumEven[i] = this._getOddSumEven(data.awards[i].numbers);
-			oddSumEven[i] = lang[oddSumEven[i]];
-		}
-		this.setHistory(6,20,oddSumEven,$("#game" + data.typeId + " .h3 table"));	
-
-		
-		var upMiddleDown = new Array();
-		for (var i in data.awards)
-		{
-			upMiddleDown[i] = this._getUpMiddleDown(data.awards[i].numbers);
-			upMiddleDown[i] = lang[upMiddleDown[i]];
-		}
-		this.setHistory(6,20,upMiddleDown,$("#game" + data.typeId + " .h4 table"));	
 		
 	}catch(e){
 		//alert(data);
 	}
 }
 
-Keno.prototype.setHistory = function(row, col, data, obj){
+Keno.prototype.setHistory = function(row, col, data, obj, arrange){
 	var index = 0;
 	var res=new Array()
-	var breaked = false;
+	var breaked = false;//截断标示符
 	for(var i=0; i<col; i++){
+		//列循环
 		for(var j=0; j<row; j++){
+			//行循环
 			if (index != 0)
 			{
-				if(data[index] == data[index-1] || breaked == true)
+				if(data[index] == data[index-1] || breaked == true || j == 0 || !arrange)//值相等不截断 已截断就不截断 开头第一个不算截断
 				{
 					res[col*j+i] = data[index++];
-					breaked = false;
-					
+					breaked = false;//截断标示符
 				}
 				else{
 					breaked = true;
@@ -115,6 +121,7 @@ Keno.prototype.setHistory = function(row, col, data, obj){
 				}
 			}
 			else{
+				//第一个赋值
 				res[col*j+i] = data[index++];
 			}
 		}

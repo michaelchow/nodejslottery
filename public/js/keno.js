@@ -3,6 +3,12 @@ function Keno() {
 }
 
 Keno.prototype.showAward = function(data) {
+	//调试代码
+	game.keno.gameList['test'] = data;
+
+	//调试代码
+
+
 	$("#game" + data.typeId + " .num_left li").animate({ opacity: 0 }, 0);
 	$("#game" + data.typeId + " .num_left li").css({transform: 'rotateX(0deg)'});
 	
@@ -25,8 +31,8 @@ Keno.prototype.showAward = function(data) {
 				},
 				complete: function(){
 					totalSum += parseInt(numArray[i]);//算分数总值
-					Game.shake($("#game" + data.typeId + " .bet_x ." + _this._getBigSmall(totalSum)).parent(), "border_red", 2);
-					//alert(totalSum);
+					//Game.shake($("#game" + data.typeId + " .bet_x ." + _this._getBigSmall(totalSum)).parent(), "border_red", 1);
+					//Game.shake($("#game" + data.typeId + " .bet_x ." + _this._getSingleDual(totalSum)).parent(), "border_red", 1);
 				}
 			});
 		},500 * i);

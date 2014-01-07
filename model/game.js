@@ -294,6 +294,8 @@ Game.getGameList = function (callback) {
 	});
 }
 
+
+/*
 //得到所有游戏列表
 Game.getAwardByRange = function (code, page, pageSize, startDate, endDate, draw, callback) {
 	var where = " WHERE type_id = " + code;
@@ -315,4 +317,36 @@ Game.getAwardByRange = function (code, page, pageSize, startDate, endDate, draw,
 
 	});
 }
+*/
+
+//得到所有游戏列表
+Game.getAwardByRange = function (code, page, pageSize, startDate, endDate, draw, callback) {
+	var where = " WHERE a.type_id = " + code;
+    where += " AND a.draw_time >= '" + startDate + "'";
+    where += " AND a.draw_time <= '" + endDate + "'";
+    if (draw)
+		where += " AND a.draw = '"+ draw + "'";
+
+	var sql = "SELECT a.draw, a.numbers, t.lottery_type FROM bet_award AS a LEFT JOIN bet_award_type AS t ON a.type_id = t.id " + where + " ORDER BY a.draw_time DESC, a.draw DESC LIMIT " + page * pageSize + " , " + pageSize;
+	var args = null;
+	
+	mysqlClient.query(sql,args,function(err, res){
+		//console.log(res);
+		if (!err)
+		{
+			if (res[0]){
+				data = {"typeId" : code, "awards" : res, "lotteryType" : res[0].lottery_type};
+			}
+			else{
+				data = null;
+			}
+			callback(null, data);
+		}else{
+			callback(err, null);
+		}
+
+	});
+}
+
+
 eval(fs.readFileSync('./library/dateformat.js').toString());

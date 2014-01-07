@@ -36,18 +36,18 @@ body{ font-size:12px;}
 .content01 .Bet .bet_x li a:hover{ color:#FFF; font-weight:bold; background:#1679a2;}
 .content01 .Bet .bet_x li a:hover span{color:#FFF; cursor:pointer;}
 .content01 .Bet .bet_x li a:hover p{cursor:pointer;}
-.content01 .Bet .bet_x .a104{ width:102px; height:35px; background:#e2e2e2}/*height:35px;*/
-.content01 .Bet .bet_x .a104 span,.content01 .Bet .bet_x .a130 span{ padding-left:2px; padding-top:2px; display:block; float:left; font-weight:bold; font-size:20px; font-family:"微软雅黑"; color:#1679a2;}
-.content01 .Bet .bet_x .a63 span{ padding-left:2px; padding-top:5px; display:block; float:left;font-weight:bold; font-size:16px; font-family:"微软雅黑"; color:#1679a2;}
-.content01 .Bet .bet_x .a48 span{ padding-left:1px; padding-top:1px; display:block; float:left;font-weight:bold; font-size:14px; font-family:"微软雅黑"; color:#1679a2;}
-.content01 .Bet .bet_x .a104 p{ float:right; margin-right:3px; display:inline; text-align:center; font-weight:bold;font-family:sans-serif;}
-.content01 .Bet .bet_x .a130 p{ float:right; margin-right:5px; display:inline; line-height:32px;text-align:center; font-weight:bold;font-family:sans-serif;}
-.content01 .Bet .bet_x .a63 p,.content01 .Bet .bet_x .a48 p{ float:left; margin-right:5px; display:inline;text-align:right;font-weight:bold; font-family:sans-serif;}
-.content01 .Bet .bet_x .a63 p{ margin-top:10px; float:right;}
-.content01 .Bet .bet_x .a48 .span48{ position:absolute; top:15px; right:3px; width:40px; height:15px; display:block; float:right; margin:0; padding:0;font-size:9px; font-weight:normal; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-.content01 .Bet .bet_x .a130{ width:128px; height:35px; background:#e2e2e2}
-.content01 .Bet .bet_x .a48{ width:49px; height:35px; background:#e2e2e2}
-.content01 .Bet .bet_x .a63{ width:62px; height:35px; background:#e2e2e2}
+.content01 .Bet .bet_x .a102{ width:102px; height:35px; background:#e2e2e2}/*height:35px;*/
+.content01 .Bet .bet_x .a102 span,.content01 .Bet .bet_x .a128 span{ padding-left:2px; padding-top:2px; display:block; float:left; font-weight:bold; font-size:20px; font-family:"微软雅黑"; color:#1679a2;}
+.content01 .Bet .bet_x .a62 span{ padding-left:2px; padding-top:5px; display:block; float:left;font-weight:bold; font-size:16px; font-family:"微软雅黑"; color:#1679a2;}
+.content01 .Bet .bet_x .a49 span{ padding-left:1px; padding-top:1px; display:block; float:left;font-weight:bold; font-size:14px; font-family:"微软雅黑"; color:#1679a2;}
+.content01 .Bet .bet_x .a102 p{ float:right; margin-right:3px; display:inline; text-align:center; font-weight:bold;font-family:sans-serif;}
+.content01 .Bet .bet_x .a128 p{ float:right; margin-right:5px; display:inline; line-height:32px;text-align:center; font-weight:bold;font-family:sans-serif;}
+.content01 .Bet .bet_x .a62 p,.content01 .Bet .bet_x .a49 p{ float:left; margin-right:5px; display:inline;text-align:right;font-weight:bold; font-family:sans-serif;}
+.content01 .Bet .bet_x .a62 p{ margin-top:10px; float:right;}
+.content01 .Bet .bet_x .a49 .span49{ position:absolute; top:15px; right:3px; width:40px; height:15px; display:block; float:right; margin:0; padding:0;font-size:9px; font-weight:normal; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.content01 .Bet .bet_x .a128{ width:128px; height:35px; background:#e2e2e2}
+.content01 .Bet .bet_x .a49{ width:49px; height:35px; background:#e2e2e2}
+.content01 .Bet .bet_x .a62{ width:62px; height:35px; background:#e2e2e2}
 .p_lay{position:absolute; top:3px; right:5px;}
 .font_red{ color:#F00  !important;}
 .font_purple{ color:#90F  !important;} 
@@ -82,7 +82,7 @@ body{ font-size:12px;}
 .num_left li a.none, .num_right li a.none{ border-left:0;}
 .num_right li{ float:left;}
 .num_right li a{font-family:"微软雅黑"; font-size:26px; color:#fff; font-weight:bold; width:48px; height:46px; line-height:46px; text-align:center; display:block;border:1px solid #fff;background:#1d83ac;}
-.num_right li a#w{ width:98px; height:42px;line-height:42px; text-align:center;}
+.num_right li a.w{ width:98px; height:42px;line-height:42px; text-align:center;}
 .num_right li a:hover{background:#fff; color:#1d83ac;}
 
 .content01 .tab_right{ padding-right:3px; float:right; width:53px;}

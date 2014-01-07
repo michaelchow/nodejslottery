@@ -81,15 +81,30 @@ io.sockets.on('connection', function (socket) {
 		{
 			io.sockets.emit('SYS_CURR_GAME_RES', games[i]);//发送各种游戏状态包
 			game.getAwardByRange(games[i].code, 0, 40, Math.round((new Date().getTime() - 60*60*24*1000 )/1000), Math.round(new Date().getTime()/1000), null, function(err, awards){
-				if (!err)
+				if (!err && awards)
 				{
-					awards.lotteryType = games[i].lotteryType;
+					//awards.lotteryType = games[i].lotteryType;
+					//console.log(awards);
 					io.sockets.emit('SYS_AWARD_RES', awards);//发送游戏历史开奖
 				}
 				
 			});
 		}
 	
+	});
+	
+	
+	//服务器指令集
+	
+	//发送游戏历史开奖
+	socket.on('USER_TO_RESULT', function (code) {
+		game.getAwardByRange(code, 0, 40, Math.round((new Date().getTime() - 60*60*24*1000 )/1000), Math.round(new Date().getTime()/1000), null, function(err, awards){
+			if (!err && awards)
+			{
+				//awards.lotteryType = games[i].lotteryType;
+				io.sockets.emit('SYS_AWARD_RES', awards);//发送游戏历史开奖
+			}
+		});
 	});
 
 	/*
@@ -110,7 +125,7 @@ io.sockets.on('connection', function (socket) {
 //测试
 var mysqlClient = require('./library/mysqlclient').init();
 
-var sql = "SELECT * FROM bet_award_type WHERE id = 1 or id = 8 or id = 4";
+var sql = "SELECT * FROM bet_award_type WHERE id = 3 or id = 1";
 //var sql = "SELECT * FROM bet_award_type WHERE type_id = 8";
 var args = null;
 var buf = new Array();

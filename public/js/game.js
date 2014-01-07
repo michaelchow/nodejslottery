@@ -35,7 +35,7 @@ Game.prototype.showTime = function(data) {
 Game.prototype.showAward = function(data) {
 	eval("this." + data.lotteryType).showAward(data);
 }
-
+//设置游戏历史
 Game.prototype.setAwards = function(data) {
 	eval("this." + data.lotteryType).setAwards(data);
 }

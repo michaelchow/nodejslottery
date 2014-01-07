@@ -4,13 +4,12 @@ function Keno() {
 
 Keno.prototype.showAward = function(data) {
 	//调试代码
-	game.keno.gameList['test'] = data;
+	game.keno.gameList['test' + data.typeId] = data;
 
 	//调试代码
 
 
-	$("#game" + data.typeId + " .num_left li").animate({ opacity: 0 }, 0);
-	$("#game" + data.typeId + " .num_left li").css({transform: 'rotateX(0deg)'});
+	$("#game" + data.typeId + " .num_left li").animate({ opacity: 0 , rotateX: 0 }, 0);//翻牌角度归零
 	
 	var numArray = data.res[0].numbers.split(',');
 	for(var i in data.res[0].numbers.split(',')){
@@ -26,11 +25,24 @@ Keno.prototype.showAward = function(data) {
 			},
 			{
 				step: function(now, fx) {
-					if (fx.prop == 'rotateX')
-						$(this).css({transform: 'rotateX(' + now + 'deg)'});
+					if (fx.prop == 'rotateX'){
+							$(this).css({transform: 'rotateX(' + now + 'deg)'});
+							//console.log(now);
+						}
 				},
 				complete: function(){
 					totalSum += parseInt(numArray[i]);//算分数总值
+					
+					//以下显示开奖属性
+					$("#game" + data.typeId + " .num_right .w").text(totalSum);
+					$("#game" + data.typeId + " .num_right .bigSmall").text(lang[_this._getBigSmall(totalSum)]);
+					$("#game" + data.typeId + " .num_right .singleDual").text(lang[_this._getSingleDual(totalSum)]);
+					$("#game" + data.typeId + " .num_right .oddSumEven").text(lang[_this._getOddSumEven(numArray.slice(0, i).join(','))]);
+					$("#game" + data.typeId + " .num_right .fiveElement").text(lang[_this._getFiveElement(totalSum)]);
+					
+					if (i == $("#game" + data.typeId + " .num_left li").length - 1){
+					    socket.emit('USER_TO_RESULT', data.typeId);
+					}
 					//Game.shake($("#game" + data.typeId + " .bet_x ." + _this._getBigSmall(totalSum)).parent(), "border_red", 1);
 					//Game.shake($("#game" + data.typeId + " .bet_x ." + _this._getSingleDual(totalSum)).parent(), "border_red", 1);
 				}
@@ -105,7 +117,7 @@ Keno.prototype.setAwards = function(data) {
 		//alert(data);
 	}
 }
-
+//行数，列数，数据，对象，是否整理
 Keno.prototype.setHistory = function(row, col, data, obj, arrange){
 	var index = 0;
 	var res=new Array()

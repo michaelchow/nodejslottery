@@ -1,6 +1,6 @@
 <div id="game<%= game[i].id %>">
             <div  class="content01_left_s content01_left">
-                <div id="bet" class="Bet">
+                <div class="Bet">
                     <div class="site">
                         <ul>
                             <li><span><%= game[i].title %></span></li>
@@ -14,20 +14,26 @@
                         </ul>
                     </div>
                     <ul class="bet_x">
-                        <li><a class="a102 big" href="###"><span>大</span><p>1.95 <br />{811-1426}</p></a></li>
-                        <li><a class="a49 810" href="###"><span>和</span><br /><p>3.8</p></a></li>
-                        <li><a class="a102 small" href="###"><span>小</span><p>1.95 <br />{811-1426}</p></a></li>
-                        <li><a class="a128 single" href="###"><span>单</span><p>1.55</p></a></li>
-                        <li><a class="a128 dual" href="###"><span>双</span><p>1.55</p></a></li>
-                        <li><a class="a62 big single" href="###"><span>大单</span><p>3.8</p></a></li>
-                        <li><a class="a62 small single" href="###"><span>小单</span><p>3.8</p></a></li>
-                        <li><a class="a62 big dual" href="###"><span>大双</span><p>3.8</p></a></li>
-                        <li><a class="a62 small dual" href="###"><span>小双</span><p>3.8</p></a></li>
-                        <li><a class="a49 metal" href="###"><span class="font_red">金</span><p class="p_lay">3.8</p><span class="span49">{123-465}</span></a></li>
-                        <li><a class="a49 wood" href="###"><span class="font_purple">木</span><p class="p_lay">3.8</p><span class="span49">{123-465}</span></a></li>
-                        <li><a class="a49 water" href="###"><span class="font_blue">水</span><p class="p_lay">3.8</p><span class="span49">{123-465}</span></a></li>
-                        <li><a class="a49 fire" href="###"><span class="font_pink">火</span><p class="p_lay">3.8</p><span class="span49">{123-465}</span></a></li>
-                        <li><a class="a49 earth" href="###"><span class="font_brown">土</span><p class="p_lay">3.8</p><span class="span49">{123-465}</span></a></li>
+                        <li><a class="a102 big" href="###"><span>大</span><span class="odds">1.95</span><span class="range">{811-1410}</span></a></li>
+                        <li><a class="a49 810" href="###"><span>810</span><span class="p_lay">108</span></a></li>
+                        <li><a class="a102 small" href="###"><span>小</span><span class="odds">1.95</span><span class="range">{210-809}</span></a></li>
+                        <li><a class="a128 single" href="###"><span>单</span><p>1.95</p></a></li>
+                        <li><a class="a128 dual" href="###"><span>双</span><p>1.95</p></a></li>
+                        <li><a class="a62 big single" href="###"><span>大单</span><p>3.7</p></a></li>
+                        <li><a class="a62 small single" href="###"><span>小单</span><p>3.7</p></a></li>
+                        <li><a class="a62 big dual" href="###"><span>大双</span><p>3.7</p></a></li>
+                        <li><a class="a62 small dual" href="###"><span>小双</span><p>3.7</p></a></li>
+                        <li><a class="a40 up" href="###"><span>上</span><p class="p_lay">2.2</p></a></li>
+                        <li><a class="a40 middle" href="###"><span>中</span><p class="p_lay">4.2</p></a></li>
+                        <li><a class="a40 down" href="###"><span>下</span><p class="p_lay">2.2</p></a></li>
+                        <li><a class="a40 odd" href="###"><span>奇</span><p class="p_lay">2.2</p></a></li>
+                        <li><a class="a40 sum" href="###"><span>和</span><p class="p_lay">4.2</p></a></li>
+                        <li><a class="a40 even" href="###"><span>偶</span><p class="p_lay">2.2</p></a></li>
+                        <li><a class="a49 metal" href="###"><span>金</span><p class="p_lay">9.2</p><p class="span49">{210-695}</p></a></li>
+                        <li><a class="a49 wood" href="###"><span>木</span><p class="p_lay">4.6</p><p class="span49">{696-763}</p></a></li>
+                        <li><a class="a49 water" href="###"><span>水</span><p class="p_lay">2.4</p><p class="span49">{764-855}</p></a></li>
+                        <li><a class="a49 fire" href="###"><span>火</span><p class="p_lay">4.6</p><p class="span49">{856-923}</p></a></li>
+                        <li><a class="a49 earth" href="###"><span>土</span><p class="p_lay">9.2</p><p class="span49">{924-1410}</p></a></li>
                     </ul>
                 </div><!--Bet end-->
                 
@@ -98,7 +104,7 @@
                 <div class="wrap">
                     <div class="menu">
                     <ul>
-                    <li class="m1" class="on"><a href="javascript:void(0);">大小</a></li>
+                    <li class="m1 on"><a href="javascript:void(0);">大小</a></li>
                     <li class="m2"><a href="javascript:void(0);">单双</a></li>
                     <li class="m3"><a href="javascript:void(0);">奇偶</a></li>
                     <li class="m4"><a href="javascript:void(0);">上下</a></li>
@@ -110,851 +116,852 @@
                     <div class="h1">
                         <table  width="360" border="1" cellspacing="0" cellpadding="0">
                           <tr>
-                            <td class="red" title="1235566[大]">大</td>
-                            <td>&nbsp;</td>
-                            <td class="red" title="1235566[大]">大</td>
-                            <td class="red" title="1235566[大]">大</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red" title="1235566[大]">大</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red" title="1235566[大]">大</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td class="red">大</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">大</td>
-                            <td>&nbsp;</td>
-                            <td class="red" title="1235566[大]">大</td>
-                            <td>小</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
-                        </table>
+                      </table>
                     </div>
                     <div class="h2" style="display:none">
                         <table  width="360" border="1" cellspacing="0" cellpadding="0">
                           <tr>
-                            <td class="red" title="1235566[双]">双</td>
-                            <td>&nbsp;</td>
-                            <td class="red">双</td>
-                            <td class="red">双</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">双</td>
-                            <td>&nbsp;</td>
-                            <td>单</td>
-                            <td class="red">双</td>
-                            <td>单</td>
-                            <td class="red">双</td>
-                            <td>单</td>
-                            <td>&nbsp;</td>
-                            <td class="red" title="124366[双]">双</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">双</td>
-                            <td>&nbsp;</td>
-                            <td class="red">双</td>
-                            <td>单</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>双</td>
-                            <td>&nbsp;</td>
-                            <td>双</td>
-                            <td>&nbsp;</td>
-                            <td class="red">单</td>
-                            <td>&nbsp;</td>
-                            <td class="red">单</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>双</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">单</td>
-                            <td>双</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">单</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>双</td>
-                            <td>双</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>&nbsp;</td>
-                            <td>单</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>单</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>&nbsp;</td>
-                            <td>单</td>
-                            <td>&nbsp;</td>
-                            <td>单</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red" title="1235566[双]">双</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td class="red">双</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">双</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">双</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                         </table>
                     </div>
                     <div class="h3" style="display:none">
                         <table  width="360" border="1" cellspacing="0" cellpadding="0">
                           <tr>
-                            <td class="red">偶</td>
-                            <td>&nbsp;</td>
-                            <td class="red">偶</td>
-                            <td class="red">偶</td>
-                            <td>奇</td>
-                            <td>&nbsp;</td>
-                            <td class="red" title="1235566[偶]">偶</td>
-                            <td>奇</td>
-                            <td>&nbsp;</td>
-                            <td>奇</td>
-                            <td>奇</td>
-                            <td>&nbsp;</td>
-                            <td>奇</td>
-                            <td>&nbsp;</td>
-                            <td class="red">偶</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">偶</td>
-                            <td>&nbsp;</td>
-                            <td class="red">偶</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>奇</td>
-                            <td>&nbsp;</td>
-                            <td class="red">偶</td>
-                            <td>&nbsp;</td>
-                            <td class="red">偶</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red" title="1235566[偶]">偶</td>
-                            <td>&nbsp;</td>
-                            <td>奇</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">偶</td>
-                            <td>&nbsp;</td>
-                            <td>奇</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                                                    <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>&nbsp;</td>
-                            <td>奇</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red" title="1235566[偶]">偶</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>奇</td>
-                            <td>&nbsp;</td>
-                            <td class="red">偶</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                           <td class="red" title="1235566[偶]">偶</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">偶</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>奇</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td class="red" title="1235566[偶]">偶</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>奇</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">偶</td>
-                            <td>&nbsp;</td>
-                            <td>奇</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">偶</td>
-                            <td>&nbsp;</td>
-                            <td>奇</td>
-                            <td>&nbsp;</td>
-                            <td class="red">偶</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">偶</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>奇</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                          </tr>
-                          <tr>
-                           <td>奇</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>奇</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>奇</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">偶</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">偶</td>
-                            <td>&nbsp;</td>
-                            <td class="red">偶</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                         </table>
                     </div>
                     <div class="h4" style="display:none">
                         <table  width="360" border="1" cellspacing="0" cellpadding="0">
-                          <tr>
-                            <td class="red">大</td>
-                            <td>&nbsp;</td>
-                            <td class="red">大</td>
-                            <td class="red">大</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">大</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">大</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td class="red">大</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">大</td>
-                            <td>&nbsp;</td>
-                            <td class="red">大</td>
-                            <td>&nbsp;</td>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">大</td>
-                            <td>&nbsp;</td>
-                            <td class="red">大</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">大</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">大</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                         </table>
                     </div>
                     <div class="h5" style="display:none">
                         <table  width="360" border="1" cellspacing="0" cellpadding="0">
                           <tr>
-                            <td class="red">双</td>
-                            <td>&nbsp;</td>
-                            <td class="red">双</td>
-                            <td class="red">双</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">双</td>
-                            <td>&nbsp;</td>
-                            <td>单</td>
-                            <td class="red">双</td>
-                            <td>单</td>
-                            <td class="red">双</td>
-                            <td>单</td>
-                            <td>&nbsp;</td>
-                            <td class="red">双</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">双</td>
-                            <td>&nbsp;</td>
-                            <td class="red">双</td>
-                            <td>单</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>双</td>
-                            <td>&nbsp;</td>
-                            <td>双</td>
-                            <td>&nbsp;</td>
-                            <td class="red">单</td>
-                            <td>&nbsp;</td>
-                            <td class="red">单</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>双</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">单</td>
-                            <td>双</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">单</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>双</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>&nbsp;</td>
-                            <td>单</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>单</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>&nbsp;</td>
-                            <td>单</td>
-                            <td>&nbsp;</td>
-                            <td>单</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">双</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td class="red">双</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">双</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">双</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                         </table>
                     </div>
                     <div class="h6" style="display:none">
                         <table  width="360" border="1" cellspacing="0" cellpadding="0">
                           <tr>
-                            <td class="red">大</td>
-                            <td>&nbsp;</td>
-                            <td class="red">大</td>
-                            <td class="red">大</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">大</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">大</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td class="red">大</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">大</td>
-                            <td>&nbsp;</td>
-                            <td class="red">大</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">大</td>
-                            <td>&nbsp;</td>
-                            <td class="red">大</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">大</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td class="red">大</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                           <tr>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>小</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                           </tr>
                         </table>
                     </div>

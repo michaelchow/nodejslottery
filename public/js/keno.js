@@ -87,19 +87,19 @@ Keno.prototype.setAwards = function(data) {
 			for (var i in data.awards)
 			{
 				bigSmall[i] = this._getBigSmall(this._getTotal(data.awards[i].numbers));
-				bigSmall[i] = lang[bigSmall[i]];
+				bigSmall[i] = "<span class=" + bigSmall[i] + ">" + lang[bigSmall[i]] + "</span>";
 				
 				singleDual[i] = this._getSingleDual(this._getTotal(data.awards[i].numbers));
-				singleDual[i] = lang[singleDual[i]];
+				singleDual[i] = "<span class=" + singleDual[i] + ">" + lang[singleDual[i]] + "</span>";
 				
 				oddSumEven[i] = this._getOddSumEven(data.awards[i].numbers);
-				oddSumEven[i] = lang[oddSumEven[i]];
+				oddSumEven[i] = "<span class=" + oddSumEven[i] + ">" + lang[oddSumEven[i]] + "</span>";
 				
 				upMiddleDown[i] = this._getUpMiddleDown(data.awards[i].numbers);
-				upMiddleDown[i] = lang[upMiddleDown[i]];
+				upMiddleDown[i] = "<span class=" + upMiddleDown[i] + ">" + lang[upMiddleDown[i]] + "</span>";
 				
 				fiveElementType[i] = this._getFiveElement(this._getTotal(data.awards[i].numbers));
-				fiveElementType[i] = lang[fiveElementType[i]];
+				fiveElementType[i] = "<span class=" + fiveElementType[i] + ">" +lang[fiveElementType[i]] + "</span>";
 				
 				sum[i] = this._getTotal(data.awards[i].numbers);
 				

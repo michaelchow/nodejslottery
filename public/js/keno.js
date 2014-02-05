@@ -41,7 +41,7 @@ Keno.prototype.showAward = function(data) {
 					$("#game" + data.typeId + " .num_right .fiveElement").text(lang[_this._getFiveElement(totalSum)]);
 					
 					if (i == $("#game" + data.typeId + " .num_left li").length - 1){
-					    socket.emit('USER_TO_RESULT', data.typeId);
+					    socket.emit('USER_TO_RESULT', data.typeId);//拿到最新开奖列表
 						$("#game" + data.typeId + " .award_middle .bigSmall").text(lang[_this._getBigSmall(totalSum)]);
 						$("#game" + data.typeId + " .award_middle .singleDual").text(lang[_this._getSingleDual(totalSum)]);
 						$("#game" + data.typeId + " .award_middle .UpMiddleDown").text(lang[_this._getUpMiddleDown(numArray.join(','))]);
@@ -84,6 +84,23 @@ Keno.prototype.setAwards = function(data) {
 			this.gameList[data.typeId].awards = data.awards;
 
 
+			
+			var numArray = data.awards[0].numbers.split(',');
+			var totalSum = 0;
+			for (var i in numArray)
+			{
+				totalSum += parseInt(numArray[i]);
+			}
+			
+			$("#game" + data.typeId + " .award_middle .bigSmall").text(lang[this._getBigSmall(totalSum)]);
+			$("#game" + data.typeId + " .award_middle .singleDual").text(lang[this._getSingleDual(totalSum)]);
+			$("#game" + data.typeId + " .award_middle .UpMiddleDown").text(lang[this._getUpMiddleDown(numArray.join(','))]);
+			$("#game" + data.typeId + " .award_middle .oddSumEven").text(lang[this._getOddSumEven(numArray.join(','))]);
+			$("#game" + data.typeId + " .award_middle .fiveElement").text(lang[this._getFiveElement(totalSum)]);
+			$("#game" + data.typeId + " .award_middle .total").text(totalSum);
+			$("#game" + data.typeId + " .award_top .draw").text(data.awards[0].draw);
+			
+
 			var bigSmall = new Array();
 			var singleDual = new Array();
 			var oddSumEven = new Array();
@@ -92,7 +109,7 @@ Keno.prototype.setAwards = function(data) {
 			var sum = Array();
 			var draw = Array();
 			
-			for (var i in data.awards)
+			for (var i in data.awards.reverse())
 			{
 				bigSmall[i] = this._getBigSmall(this._getTotal(data.awards[i].numbers));
 				bigSmall[i] = "<span class=" + bigSmall[i] + ">" + lang[bigSmall[i]] + "</span>";

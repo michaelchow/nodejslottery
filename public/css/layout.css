@@ -22,41 +22,41 @@ body{ font-size:12px;}
 .content01_margin_top20{ margin-top:20px;}
 .content01_left{ float:left; width:492px; height:349px; _height:363px; background:#cccccc;}/*height:345px;*/
 .content01_left_s{height:349px !important; _height:367px !important;}/*height:337px*//*_height:355px*/
-.content01 .Bet{ float:left; width:265px; height:200px;  margin:3px 0 3px 3px; display:inline;}/*height:200px;*/
+.content01 .bet{ float:left; width:265px; height:200px;  margin:3px 0 3px 3px; display:inline;}/*height:200px;*/
 .content01 #Bet02{ height:212px !important;}
-.content01 .Bet .site{ float:left; width:131px; height:55px; background:#1d83ac;}
-.content01 .Bet .site ul{ padding-top:10px; padding-left:7px; font-weight:bold; color:#FFF;}
-.content01 .Bet .site ul span{ font-size:14px;}
-.content01 .Bet .countdown{ float:right; width:131px; height:55px;background:#FFF;}
-.content01 .Bet .countdown ul{ padding-top:10px; padding-left:10px; font-weight:bold; color:#000;}
-.content01 .Bet .countdown ul span{ font-size:16px; color:#1d83ac;}
+.content01 .bet .site{ float:left; width:131px; height:55px; background:#1d83ac;}
+.content01 .bet .site ul{ padding-top:10px; padding-left:7px; font-weight:bold; color:#FFF;}
+.content01 .bet .site ul span{ font-size:14px;}
+.content01 .bet .countdown{ float:right; width:131px; height:55px;background:#FFF;}
+.content01 .bet .countdown ul{ padding-top:10px; padding-left:10px; font-weight:bold; color:#000;}
+.content01 .bet .countdown ul span{ font-size:16px; color:#1d83ac;}
 
-.content01 .Bet .bet_x li{ display:inline; float:left; margin:1px; border:1px solid #fff8ac; position:relative;}
-.content01 .Bet .bet_x li a{ display:block;}
-.content01 .Bet .bet_x li a:hover{ color:#FFF; font-weight:bold; background:#1679a2;}
-.content01 .Bet .bet_x li a:hover span{color:#FFF; cursor:pointer;}
-.content01 .Bet .bet_x li a:hover p{cursor:pointer;}
-.content01 .Bet .bet_x .a102{ width:102px; height:30px; background:#e2e2e2}/*height:35px;*/
-.content01 .Bet .bet_x .a102 span,.content01 .Bet .bet_x .a128 span{ padding-left:2px; display:block; float:left; font-weight:bold; font-size:20px; font-family:"微软雅黑"; color:#1679a2;}
-.content01 .Bet .bet_x .a62 span{ padding-left:2px; padding-top:5px; display:block; float:left;font-weight:bold; font-size:16px; font-family:"微软雅黑"; color:#1679a2;}
-.content01 .Bet .bet_x .a49 span{ padding-left:1px; padding-top:1px; display:block; float:left;font-weight:bold; font-size:14px; font-family:"微软雅黑"; color:#1679a2;}
-.content01 .Bet .bet_x .a40 span{ width:40px;text-align:center;display:block; float:left;font-weight:bold; font-size:16px; font-family:"微软雅黑"; color:#1679a2;}
-
-.content01 .Bet .bet_x .a49 .odds{ float:left;display:inline; text-align:center; font-weight:bold;font-family:sans-serif;font-size:12px;color:#000;width:49px;}
-.content01 .Bet .bet_x .a102 .odds{float:right;display:inline; text-align:center; font-weight:bold;font-family:sans-serif;font-size:12px;color:#000;width:60px;}
-.content01 .Bet .bet_x .a102 .range{float:right; margin-right:3px; display:inline; text-align:center;font-size:12px;font-family:sans-serif;font-weight:normal;}
-.content01 .Bet .bet_x .a128 p{ float:right; margin-right:5px; display:inline; line-height:24px;text-align:center; font-weight:bold;font-family:sans-serif;}
-.content01 .Bet .bet_x .a62 p,.content01 .Bet .bet_x .a49 p{ float:left; margin-right:5px; display:inline;text-align:right;font-weight:bold; font-family:sans-serif;}
-.content01 .Bet .bet_x .a40 p{ float:left; padding-top:15px; width:40px;display:inline;text-align:center;font-weight:bold; font-family:sans-serif;}
-.content01 .Bet .bet_x .a62 p{ margin-top:10px; float:right;}
-.content01 .Bet .bet_x .a49 .span49{ position:absolute; top:15px; right:3px; width:40px; height:15px; display:block; float:right; margin:0; padding:0;font-size:9px; font-weight:normal; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-.content01 .Bet .bet_x .a128{ width:128px; height:30px; background:#e2e2e2}
-.content01 .Bet .bet_x .a49{ width:49px; height:30px; background:#e2e2e2}
-.content01 .Bet .bet_x .a40{ width:40px; height:30px; background:#e2e2e2}
-.content01 .Bet .bet_x .a62{ width:62px; height:30px; background:#e2e2e2}
+.content01 .bet .bet_x li{ display:inline; float:left; margin:1px; border:1px solid #fff8ac; position:relative;}
+.content01 .bet .bet_x li a{ display:block;}
+.content01 .bet .bet_x li a:hover{ color:#FFF; font-weight:bold; background:#1679a2;}
+.content01 .bet .bet_x li a:hover span{color:#FFF; cursor:pointer;}
+.content01 .bet .bet_x li a:hover p{cursor:pointer;}
+.content01 .bet .bet_x .a102{ width:102px; height:30px; background:#e2e2e2}/*height:35px;*/
+.content01 .bet .bet_x .a102 span,.content01 .bet .bet_x .a128 span{ padding-left:2px; display:block; float:left; font-weight:bold; font-size:20px; font-family:"微软雅黑"; color:#1679a2;}
+.content01 .bet .bet_x .a62 span{ padding-left:2px; padding-top:5px; display:block; float:left;font-weight:bold; font-size:16px; font-family:"微软雅黑"; color:#1679a2;} 
+.content01 .bet .bet_x .a49 span{ padding-left:1px; padding-top:1px; display:block; float:left;font-weight:bold; font-size:14px; font-family:"微软雅黑"; color:#1679a2;}
+.content01 .bet .bet_x .a49 .span49{ text-align:center; width:100%; display:block; float:left;font-weight:bold; font-size:14px; font-family:"微软雅黑"; color:#1679a2;}
+.content01 .bet .bet_x .a49 .range{ color:#1679a2; position:absolute; top:16px; width:40px; height:15px; display:block; float:right; margin:0; padding:0;font-size:9px; font-weight:normal; white-space:nowrap;}
+.content01 .bet .bet_x .a40 span{ width:40px;text-align:center;display:block; float:left;font-weight:bold; font-size:16px; font-family:"微软雅黑"; color:#1679a2;}
+.content01 .bet .bet_x .a40 .odds{float:right;position:absolute; top:18px; right:0px; text-align:center; font-weight:bold;font-family:sans-serif;font-size:12px;color:#000;}
+.content01 .bet .bet_x .a49 .odds{ font-weight:bold;font-family:sans-serif;font-size:12px;color:#000;position:absolute;top:15px;left:13px;}
+.content01 .bet .bet_x .a102 .odds{float:right;display:inline; text-align:center; font-weight:bold;font-family:sans-serif;font-size:12px;color:#000;width:60px;}
+.content01 .bet .bet_x .a102 .range{float:right; margin-right:3px; display:inline; text-align:center;font-size:12px;font-family:sans-serif;font-weight:normal;}
+.content01 .bet .bet_x .a128 p{ float:right; margin-right:5px; display:inline; line-height:24px;text-align:center; font-weight:bold;font-family:sans-serif;}
+.content01 .bet .bet_x .a62 p,.content01 .bet .bet_x .a49 p{ float:left; margin-right:5px; display:inline;text-align:right;font-weight:bold; font-family:sans-serif;}
+.content01 .bet .bet_x .a40 p{ float:left; padding-top:15px; width:40px;display:inline;text-align:center;font-weight:bold; font-family:sans-serif;}
+.content01 .bet .bet_x .a62 p{ margin-top:10px; float:right;}
+.content01 .bet .bet_x .a128{ width:128px; height:30px; background:#e2e2e2}
+.content01 .bet .bet_x .a49{ width:49px; height:30px; background:#e2e2e2}
+.content01 .bet .bet_x .a40{ width:40px; height:30px; background:#e2e2e2}
+.content01 .bet .bet_x .a62{ width:62px; height:30px; background:#e2e2e2}
 .p_lay{position:absolute; top:3px; right:5px;}
 
-.metal span{color:#F00 !important;}
 
 .history .big, .history .single, .history .up, .history .odd{color:#cf0000 !important;}
 .history .sum, .history .middle{color:#39b54a !important;}
@@ -80,8 +80,7 @@ body{ font-size:12px;}
 
 .border_red{ border:1px solid #F00 !important;}
  
-.content01 .award{ float:right; width:215px; height:200px; margin:3px 3px 3px 0px; display:inline;}/*height:200px;*/
-.content01 #award{ height:212px;}
+.content01 .award{ float:right; width:215px; height:200px; margin:3px 3px 3px 0px; display:inline; height:225px;}/*height:200px;*/
 .content01 .award .award_top{ height:20px; width:215px; background:#258eb8;  position:relative;}
 .content01 .award .award_top a{ color:#FFF;}
 .content01 .award .award_top li{ text-align:center; float:left; width:65px; color:#FFF; line-height:20px;}
@@ -102,13 +101,13 @@ body{ font-size:12px;}
 .num_left{ float:left; width:114px; height:142px;}
 .num_right{float:left; width:100px; height:142px;}
 .num_left li{ float:left;}
-.num_left li a{ font-family:"微软雅黑"; display:block;background:#FFF; width:27px; height:26px; text-align:center; line-height:26px; border:1px solid #898989;}
+.num_left li a{ font-family:"微软雅黑"; display:block;background:#FFF; width:27px; height:30px; text-align:center; line-height:26px; border:1px solid #898989;}
 .num_left li a:hover{background:#1d83ac; color:#FFF; font-weight:bold;}
 .num_left li a.none, .num_right li a.none{ border-left:0;}
 .num_right li{ float:left;}
-.num_right li a{font-family:"微软雅黑"; font-size:26px; color:#fff; font-weight:bold; width:48px; height:46px; line-height:46px; text-align:center; display:block;border:1px solid #fff;background:#1d83ac;}
+.num_right li a{font-family:"微软雅黑"; font-size:26px; color:#fff; font-weight:bold; width:48px; height:52px; line-height:46px; text-align:center; display:block;border:1px solid #fff;background:#1d83ac;}
 .num_right li a:hover{background:#fff; color:#1d83ac;}
-.num_right .w{ width:98px; height:42px;line-height:42px; text-align:center;}
+.num_right .total{ width:98px; height:50px;line-height:42px; text-align:center;}
 
 
 .content01 .tab_right{ padding-right:3px; float:right; width:53px;}
@@ -126,14 +125,14 @@ body{ font-size:12px;}
 
 
 /*时时彩相关样式表*/
-.Bet .bet_y{ display:inline-block; margin-top:2px;}
+.bet .bet_y{ display:inline-block; margin-top:2px;}
 .bet_y_l{font-size:14px !important; padding:0 !important;}
-.Bet .bet_y li{ float:left;}
-.Bet .bet_y li span{ float:left; padding-left:5px; font-weight:bold; font-size:20px; color:#23a9e1; line-height:38px; font-family:"微软雅黑";}
-.Bet .bet_y li p{float:right; padding-right:5px; line-height:38px;font-weight:bold; font-size:16px;font-family:Georgia, "Times New Roman", Times, serif;}
-.Bet .bet_y li a{ display:block; margin:1px; width:128px; height:38px; background:#dedede; border:1px solid #fff8ac;}
-.Bet .bet_y li a:hover span{color:#FFF;}
-.Bet .bet_y li a:hover{color:#FFF; font-weight:bold; background:#1679a2}
+.bet .bet_y li{ float:left;}
+.bet .bet_y li span{ float:left; padding-left:5px; font-weight:bold; font-size:20px; color:#23a9e1; line-height:38px; font-family:"微软雅黑";}
+.bet .bet_y li p{float:right; padding-right:5px; line-height:38px;font-weight:bold; font-size:16px;font-family:Georgia, "Times New Roman", Times, serif;}
+.bet .bet_y li a{ display:block; margin:1px; width:128px; height:38px; background:#dedede; border:1px solid #fff8ac;}
+.bet .bet_y li a:hover span{color:#FFF;}
+.bet .bet_y li a:hover{color:#FFF; font-weight:bold; background:#1679a2}
 
 .award_button02{ margin-top:2px; width:265px; height:58px; background:url(../img/jiangxi_bg.jpg); position:relative;}
 .button_flop{ width:78px; height:24px; background:#1c81ab; border:0; line-height:24px; color:#FFF; font-weight:bold; position:absolute; top:4px; right:3px;}

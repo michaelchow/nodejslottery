@@ -1,10 +1,10 @@
 <div id="game<%= game[i].id %>">
             <div  class="content01_left_s content01_left">
-                <div class="Bet">
+                <div class="bet">
                     <div class="site">
                         <ul>
                             <li><span><%= game[i].title %></span></li>
-                            <li>区号：<span>42546564</span></li>
+                            <li>期号：<span class="draw"></span></li>
                         </ul>
                     </div>
                     <div class="countdown">
@@ -15,7 +15,7 @@
                     </div>
                     <ul class="bet_x">
                         <li><a class="a102 big" href="###"><span>大</span><span class="odds">1.95</span><span class="range">{811-1410}</span></a></li>
-                        <li><a class="a49 810" href="###"><span>810</span><span class="p_lay">108</span></a></li>
+                        <li><a class="a49 810" href="###"><span class="span49">810</span><span class="odds">108</span></a></li>
                         <li><a class="a102 small" href="###"><span>小</span><span class="odds">1.95</span><span class="range">{210-809}</span></a></li>
                         <li><a class="a128 single" href="###"><span>单</span><p>1.95</p></a></li>
                         <li><a class="a128 dual" href="###"><span>双</span><p>1.95</p></a></li>
@@ -23,38 +23,38 @@
                         <li><a class="a62 small single" href="###"><span>小单</span><p>3.7</p></a></li>
                         <li><a class="a62 big dual" href="###"><span>大双</span><p>3.7</p></a></li>
                         <li><a class="a62 small dual" href="###"><span>小双</span><p>3.7</p></a></li>
-                        <li><a class="a40 up" href="###"><span>上</span><p class="p_lay">2.2</p></a></li>
-                        <li><a class="a40 middle" href="###"><span>中</span><p class="p_lay">4.2</p></a></li>
-                        <li><a class="a40 down" href="###"><span>下</span><p class="p_lay">2.2</p></a></li>
-                        <li><a class="a40 odd" href="###"><span>奇</span><p class="p_lay">2.2</p></a></li>
-                        <li><a class="a40 sum" href="###"><span>和</span><p class="p_lay">4.2</p></a></li>
-                        <li><a class="a40 even" href="###"><span>偶</span><p class="p_lay">2.2</p></a></li>
-                        <li><a class="a49 metal" href="###"><span>金</span><p class="p_lay">9.2</p><p class="span49">{210-695}</p></a></li>
-                        <li><a class="a49 wood" href="###"><span>木</span><p class="p_lay">4.6</p><p class="span49">{696-763}</p></a></li>
-                        <li><a class="a49 water" href="###"><span>水</span><p class="p_lay">2.4</p><p class="span49">{764-855}</p></a></li>
-                        <li><a class="a49 fire" href="###"><span>火</span><p class="p_lay">4.6</p><p class="span49">{856-923}</p></a></li>
-                        <li><a class="a49 earth" href="###"><span>土</span><p class="p_lay">9.2</p><p class="span49">{924-1410}</p></a></li>
+                        <li><a class="a40 up" href="###"><span>上</span><span class="odds">2.2</span></a></li>
+                        <li><a class="a40 middle" href="###"><span>中</span><span class="odds">4.2</span></a></li>
+                        <li><a class="a40 down" href="###"><span>下</span><span class="odds">2.2</span></a></li>
+                        <li><a class="a40 odd" href="###"><span>奇</span><span class="odds">2.2</span></a></li>
+                        <li><a class="a40 sum" href="###"><span>和</span><span class="odds">4.2</span></a></li>
+                        <li><a class="a40 even" href="###"><span>偶</span><span class="odds">2.2</span></a></li>
+                        <li><a class="a49 metal" href="###"><span>金</span><p class="p_lay">9.2</p><p class="range">{210-695}</p></a></li>
+                        <li><a class="a49 wood" href="###"><span>木</span><p class="p_lay">4.6</p><p class="range">{696-763}</p></a></li>
+                        <li><a class="a49 water" href="###"><span>水</span><p class="p_lay">2.4</p><p class="range">{764-855}</p></a></li>
+                        <li><a class="a49 fire" href="###"><span>火</span><p class="p_lay">4.6</p><p class="range">{856-923}</p></a></li>
+                        <li><a class="a49 earth" href="###"><span>土</span><p class="p_lay">9.2</p><p class="range">{924-1410}</p></a></li>
                     </ul>
                 </div><!--Bet end-->
                 
-                <div id="award" class="award">
+                <div class="award">
                     <div class="award_top">
                         <ul>
                         <li>开奖结果</li>
                         <li class="back"><a href="###"><img src="img/back.gif"></a></li>
-                        <li><span>458952</span></li>
+                        <li class="draw"><span></span></li>
                         <li class="next"><a href="###"><img src="img/next.gif" /></a></li>
                         <li>显示&nbsp;&nbsp官网</li>
                         </ul>
                     </div><!--enter_top end-->
                     <div class="award_middle">
                         <ul>
-                            <li>大  </li>
-                            <li>下</li>
-                            <li>单</li>
-                            <li>奇</li>
-                            <li>火</li>
-                            <li>917</li>
+                            <li class="bigSmall"></li>
+                            <li class="singleDual"></li>
+							<li class="UpMiddleDown"></li>
+                            <li class="oddSumEven"></li>
+                            <li class="fiveElement"></li>
+                            <li class="total"></li>
                             <li><a href="###">详情</a></li>   
                         </ul>
                     </div><!--enter_middle end-->
@@ -89,11 +89,11 @@
                         </div>
                         <div class="num_right">
                             <ul>
-                                <li><a class="w">0770</a></li>
-                                <li><a class="bigSmall">小</a></li>
-                                <li><a class="singleDual">双</a></li>
-                                <li><a class="oddSumEven">偶</a></li>
-                                <li><a class="fiveElement">水</a></li>
+                                <li><a class="total"></a></li>
+                                <li><a class="bigSmall"></a></li>
+                                <li><a class="singleDual"></a></li>
+                                <li><a class="oddSumEven"></a></li>
+                                <li><a class="fiveElement"></a></li>
                             </ul>
                         </div>
                     </div><!--lottery end-->
@@ -114,7 +114,7 @@
                     </div>
                     <div class="history">
                     <div class="h1">
-                        <table  width="360" border="1" cellspacing="0" cellpadding="0">
+                        <table  width="360" border="1" cellspacing="1" cellpadding="0">
                           <tr>
                             <td></td>
                             <td></td>
@@ -256,7 +256,7 @@
                       </table>
                     </div>
                     <div class="h2" style="display:none">
-                        <table  width="360" border="1" cellspacing="0" cellpadding="0">
+                        <table  width="360" border="1" cellspacing="1" cellpadding="0">
                           <tr>
                             <td></td>
                             <td></td>
@@ -398,7 +398,7 @@
                         </table>
                     </div>
                     <div class="h3" style="display:none">
-                        <table  width="360" border="1" cellspacing="0" cellpadding="0">
+                        <table  width="360" border="1" cellspacing="1" cellpadding="0">
                           <tr>
                             <td></td>
                             <td></td>
@@ -540,7 +540,7 @@
                         </table>
                     </div>
                     <div class="h4" style="display:none">
-                        <table  width="360" border="1" cellspacing="0" cellpadding="0">
+                        <table  width="360" border="1" cellspacing="1" cellpadding="0">
                         <tr>
                             <td></td>
                             <td></td>
@@ -682,7 +682,7 @@
                         </table>
                     </div>
                     <div class="h5" style="display:none">
-                        <table  width="360" border="1" cellspacing="0" cellpadding="0">
+                        <table  width="360" border="1" cellspacing="1" cellpadding="0">
                           <tr>
                             <td></td>
                             <td></td>
@@ -824,7 +824,7 @@
                         </table>
                     </div>
                     <div class="h6" style="display:none">
-                        <table  width="360" border="1" cellspacing="0" cellpadding="0">
+                        <table  width="360" border="1" cellspacing="1" cellpadding="0">
                           <tr>
                             <td></td>
                             <td></td>

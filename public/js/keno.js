@@ -1,7 +1,7 @@
 function Keno() {
 	this.gameList = new Array();
 }
-
+//开奖画面
 Keno.prototype.showAward = function(data) {
 	//调试代码
 	game.keno.gameList['test' + data.typeId] = data;
@@ -34,7 +34,7 @@ Keno.prototype.showAward = function(data) {
 					totalSum += parseInt(numArray[i]);//算分数总值
 					
 					//以下显示开奖属性
-					$("#game" + data.typeId + " .num_right .w").text(totalSum);
+					$("#game" + data.typeId + " .num_right .total").text(totalSum);
 					$("#game" + data.typeId + " .num_right .bigSmall").text(lang[_this._getBigSmall(totalSum)]);
 					$("#game" + data.typeId + " .num_right .singleDual").text(lang[_this._getSingleDual(totalSum)]);
 					$("#game" + data.typeId + " .num_right .oddSumEven").text(lang[_this._getOddSumEven(numArray.slice(0, i).join(','))]);
@@ -42,6 +42,13 @@ Keno.prototype.showAward = function(data) {
 					
 					if (i == $("#game" + data.typeId + " .num_left li").length - 1){
 					    socket.emit('USER_TO_RESULT', data.typeId);
+						$("#game" + data.typeId + " .award_middle .bigSmall").text(lang[_this._getBigSmall(totalSum)]);
+						$("#game" + data.typeId + " .award_middle .singleDual").text(lang[_this._getSingleDual(totalSum)]);
+						$("#game" + data.typeId + " .award_middle .UpMiddleDown").text(lang[_this._getUpMiddleDown(numArray.join(','))]);
+						$("#game" + data.typeId + " .award_middle .oddSumEven").text(lang[_this._getOddSumEven(numArray.join(','))]);
+						$("#game" + data.typeId + " .award_middle .fiveElement").text(lang[_this._getFiveElement(totalSum)]);
+						$("#game" + data.typeId + " .award_middle .total").text(totalSum);
+						$("#game" + data.typeId + " .award_top .draw").text(data.res[0].draw);
 					}
 					//Game.shake($("#game" + data.typeId + " .bet_x ." + _this._getBigSmall(totalSum)).parent(), "border_red", 1);
 					//Game.shake($("#game" + data.typeId + " .bet_x ." + _this._getSingleDual(totalSum)).parent(), "border_red", 1);
@@ -75,7 +82,7 @@ Keno.prototype.setAwards = function(data) {
 		if (data.awards.length > 0 )
 		{
 			this.gameList[data.typeId].awards = data.awards;
-			
+
 
 			var bigSmall = new Array();
 			var singleDual = new Array();
@@ -83,6 +90,7 @@ Keno.prototype.setAwards = function(data) {
 			var upMiddleDown = new Array();
 			var fiveElementType = new Array();
 			var sum = Array();
+			var draw = Array();
 			
 			for (var i in data.awards)
 			{
@@ -102,25 +110,27 @@ Keno.prototype.setAwards = function(data) {
 				fiveElementType[i] = "<span class=" + fiveElementType[i] + ">" +lang[fiveElementType[i]] + "</span>";
 				
 				sum[i] = this._getTotal(data.awards[i].numbers);
+				draw[i] = data.awards[i].draw;
 				
 				
 			}
-			this.setHistory(6,20,bigSmall,$("#game" + data.typeId + " .h1 table"), true);
-			this.setHistory(6,20,singleDual,$("#game" + data.typeId + " .h2 table"), true);
-			this.setHistory(6,20,oddSumEven,$("#game" + data.typeId + " .h3 table"), true);
-			this.setHistory(6,20,upMiddleDown,$("#game" + data.typeId + " .h4 table"), true);
-			this.setHistory(6,20,sum,$("#game" + data.typeId + " .h5 table"), false);
-			this.setHistory(6,20,fiveElementType,$("#game" + data.typeId + " .h6 table"), true);
+			this.setHistory(6,20,bigSmall,draw,$("#game" + data.typeId + " .h1 table"), true);
+			this.setHistory(6,20,singleDual,draw,$("#game" + data.typeId + " .h2 table"), true);
+			this.setHistory(6,20,oddSumEven,draw,$("#game" + data.typeId + " .h3 table"), true);
+			this.setHistory(6,20,upMiddleDown,draw,$("#game" + data.typeId + " .h4 table"), true);
+			this.setHistory(6,20,sum,draw,$("#game" + data.typeId + " .h5 table"), false);
+			this.setHistory(6,20,fiveElementType,draw,$("#game" + data.typeId + " .h6 table"), true);
 		}
 		
 	}catch(e){
 		//alert(data);
 	}
 }
-//行数，列数，数据，对象，是否整理
-Keno.prototype.setHistory = function(row, col, data, obj, arrange){
+//行数，列数，数据，期数， 对象，是否整理
+Keno.prototype.setHistory = function(row, col, data, draw, obj, arrange){
 	var index = 0;
-	var res=new Array()
+	var res=new Array();
+	var title=new Array();
 	var breaked = false;//截断标示符
 	for(var i=0; i<col; i++){
 		//列循环
@@ -130,6 +140,7 @@ Keno.prototype.setHistory = function(row, col, data, obj, arrange){
 			{
 				if(data[index] == data[index-1] || breaked == true || j == 0 || !arrange)//值相等不截断 已截断就不截断 开头第一个不算截断
 				{
+					title[col*j+i] = draw[index];
 					res[col*j+i] = data[index++];
 					breaked = false;//截断标示符
 				}
@@ -140,6 +151,7 @@ Keno.prototype.setHistory = function(row, col, data, obj, arrange){
 			}
 			else{
 				//第一个赋值
+				title[col*j+i] = draw[index];
 				res[col*j+i] = data[index++];
 			}
 		}
@@ -152,7 +164,7 @@ Keno.prototype.setHistory = function(row, col, data, obj, arrange){
 		for(var j=0; j<col; j++){
 			if (typeof(res[col*i+j]) != 'undefined')
 			{
-				html += "<td>" + res[col*i+j] + "</td>";
+				html += "<td title='"+ title[col*i+j] + "期'>" + res[col*i+j] + "</td>";
 			}else{
 				html += "<td>" + " " + "</td>";
 			}
